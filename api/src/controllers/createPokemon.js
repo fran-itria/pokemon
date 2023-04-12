@@ -1,18 +1,26 @@
 const { Pokemon } = require('../db')
 
 const createPokemon = async (req, res) => {
-    const { name, image, life, attack, defence, velocity, height, weight } = req.body
+    const { name, image, hp, attack, deffence, velocity, height, weight } = req.body
+    // const [newPokemon, created] = await Pokemon.findOrCreate({
     const newPokemon = await Pokemon.create({
-        name,
-        image,
-        life,
-        attack,
-        defence,
-        velocity,
-        height,
-        weight
+        // where: {
+        //     name
+        // },
+        // default: {
+            name,
+            image,
+            hp,
+            attack,
+            deffence,
+            velocity,
+            height,
+            weight
+        // }
     })
-    if(!newPokemon) return req.status(400).json({error: 'Pokemon no creado'})
+    // if (created) return req.status(400).json({ mensaje: 'Pokemon creado ahora', newPokemon})
+    // if(!created) return req.status(400).json({ mensaje: 'Pokemon ya creado'})
+    if (!newPokemon) return req.status(400).json({ error: 'Pokemon no creado' })
     return res.status(201).json(newPokemon)
 }
 

@@ -13,13 +13,14 @@ module.exports = (sequelize) => {
       },
       name: {
         type: DataTypes.STRING,
+        unique: true,
         allowNull: false,
       },
       image: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      life: {
+      hp: {
         type: DataTypes.INTEGER,
         allowNull: false
       },
