@@ -1,7 +1,7 @@
 const { Pokemon } = require('../db')
 
 const createPokemon = async (req, res) => {
-    const { name, image, hp, attack, deffence, velocity, height, weight } = req.body
+    const { name, image, hp, attack, deffence, velocity, height, weight, types } = req.body
     // const [newPokemon, created] = await Pokemon.findOrCreate({
     const newPokemon = await Pokemon.create({
         // where: {
@@ -18,6 +18,7 @@ const createPokemon = async (req, res) => {
             weight
         // }
     })
+    newPokemon.addTypes(types)
     // if (created) return req.status(400).json({ mensaje: 'Pokemon creado ahora', newPokemon})
     // if(!created) return req.status(400).json({ mensaje: 'Pokemon ya creado'})
     if (!newPokemon) return req.status(400).json({ error: 'Pokemon no creado' })

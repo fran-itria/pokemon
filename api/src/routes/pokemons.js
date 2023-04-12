@@ -3,11 +3,11 @@ const pokemons = Router()
 const { findAllPokemons } = require('../controllers/findAllPokemons')
 const createPokemon = require('../controllers/createPokemon')
 const findPokemonById = require('../controllers/findPokemonById')
-const types = require('./types')
+const findPokemonByName = require('../controllers/findPokemonByName')
 
 pokemons.get('/', findAllPokemons)
+pokemons.get('/name', findPokemonByName)
 pokemons.get('/:idPokemon', findPokemonById)
 pokemons.post('/', createPokemon)
-pokemons.use('/types', types)
 
 module.exports = pokemons
