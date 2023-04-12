@@ -4,8 +4,9 @@ const axios = require('axios')
 const findAllPokemons = async (req, res) => {
     try {
         let pokemonsApi = []
+        const caso = 'all'
         for (let i = 1; i < 61; i++) {
-            const pokemon = await findPokemonsApi(i)
+            const pokemon = await findPokemonsApi(i, caso)
             pokemonsApi.push(pokemon)
         }
         let pokemonsDB = await Pokemon.findAll({
@@ -27,14 +28,20 @@ const findAllPokemons = async (req, res) => {
 
 
 // Busca pokemones de la API
-const findPokemonsApi = async (idOrName) => {
-    const pokemon = await axios(`https://pokeapi.co/api/v2/pokemon/${idOrName}`)
+const findPokemonsApi = async (idOrName, caso) => {
+    if(caso == 'all'){
+        const pokemon = await axios(`https://pokeapi.co/api/v2/pokemon/${idOrName}`)
         .then(response => {
             const { name, sprites, types } = response.data
             const typesPokemon = types.map(type => type.type.name)
             return { name, image: sprites.front_default, types: typesPokemon }
         })
-    return pokemon
+        return pokemon
+    } else {
+        const pokemon = await axios(`https://pokeapi.co/api/v2/pokemon/${idOrName}`)
+        .then(response => response.data)
+        return pokemon
+    }
 }
 
 
