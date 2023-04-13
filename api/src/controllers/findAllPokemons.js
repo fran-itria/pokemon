@@ -35,7 +35,7 @@ const findPokemonsApi = async (idOrName, caso) => {
         const response = await axios(`https://pokeapi.co/api/v2/pokemon/${idOrName}`)
         const data = await response.data
         const typesPokemons = await data.types.map(type => type.type.name)
-        return {name: data.name, image: data.sprites.front_default, types: typesPokemons}
+        return {id: data.id, name: data.name, image: data.sprites.front_default, types: typesPokemons}
     } else {
         const response = await axios(`https://pokeapi.co/api/v2/pokemon/${idOrName}`)
         return response.data
