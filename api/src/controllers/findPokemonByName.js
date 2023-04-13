@@ -3,22 +3,19 @@ const findOnePokemon = require('./findOnePokemon')
 
 const findPokemonByName = async (req, res) => {
     const { name } = req.query
+    name = name.toLowerCase()
     const caso = 'particular'
-    try {
-        const pokemonDB = await Pokemon.findOne({
-            where: { name },
-            include: {
-                model: Type,
-                attributes: ['name'],
-                through: {
-                    attributes: []
-                }
+    const pokemonDB = await Pokemon.findOne({
+        where: { name },
+        include: {
+            model: Type,
+            attributes: ['name'],
+            through: {
+                attributes: []
             }
-        })
-        findOnePokemon(pokemonDB, name, caso, res)
-    } catch (error) {
-        return res.status(400).json({ error: `Pokemon: ${error.response.data.toLowerCase()}` })
-    }
+        }
+    })
+    findOnePokemon(pokemonDB, name, caso, res)
 }
 
 module.exports = findPokemonByName
