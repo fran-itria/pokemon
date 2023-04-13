@@ -9,7 +9,7 @@ const findAllPokemons = async (req, res) => {
             const pokemon = await findPokemonsApi(i, caso)
             pokemonsApi.push(pokemon)
         }
-        let pokemonsDB = await Pokemon.findAll({
+        const pokemonsDB = await Pokemon.findAll({
             attributes: ['name', 'image'],
             include: {
                 model: Type,
