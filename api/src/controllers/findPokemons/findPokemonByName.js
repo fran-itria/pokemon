@@ -4,7 +4,6 @@ const findOnePokemon = require('./findOnePokemon')
 
 const findPokemonByName = async (req, res) => {
     const name = req.query.name.toLowerCase()
-    const caso = 'all'
     const pokemonDB = await Pokemon.findOne({
         where: { name },
         include: {
@@ -15,7 +14,7 @@ const findPokemonByName = async (req, res) => {
             }
         }
     })
-    findOnePokemon(pokemonDB, name, caso, res)
+    findOnePokemon(pokemonDB, name, res)
 }
 
 module.exports = findPokemonByName

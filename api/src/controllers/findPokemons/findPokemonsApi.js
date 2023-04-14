@@ -1,15 +1,8 @@
 const axios = require('axios')
 
-const findPokemonsApi = async (idOrName, caso) => {
-    if (caso == 'all') {
-        const response = await axios(`https://pokeapi.co/api/v2/pokemon/${idOrName}`)
-        const data = await response.data
-        const typesPokemons = await data.types.map(type => type.type.name)
-        return { id: data.id, name: data.name, image: data.sprites.front_default, types: typesPokemons }
-    } else {
+const findPokemonsApi = async (idOrName) => {
         const response = await axios(`https://pokeapi.co/api/v2/pokemon/${idOrName}`)
         return response.data
-    }
 }
 
 

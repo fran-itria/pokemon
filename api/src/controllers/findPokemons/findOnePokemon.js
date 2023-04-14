@@ -1,9 +1,9 @@
 const findPokemonsApi = require('./findPokemonsApi')
 
-const findOnePokemon = async (pokemonDB, idOrName, caso, res) => {
+const findOnePokemon = async (pokemonDB, idOrName, res) => {
     try {
         if (!pokemonDB) {
-            const pokemon = await findPokemonsApi(idOrName, caso)
+            const pokemon = await findPokemonsApi(idOrName)
             return res.status(200).json(pokemon)
         }
         return res.status(200).json(pokemonDB)
