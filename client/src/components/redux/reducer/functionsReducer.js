@@ -7,5 +7,5 @@ export default function filter(state, payload) {
         }
     })
     if (filtrados.length > 0) return filtrados
-    return []
+    return {}
 }

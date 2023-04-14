@@ -4,10 +4,8 @@
     flex-direction: column;
     justify-content: center;
     height: calc(100vh - var(--heihgNav));
-    background-color: black;
 }
 .chico{
-    background-color: green;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,13 +14,13 @@
 }
 
 .pokemons{
-    /* display: flex;
-    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     align-content: center;
     flex-wrap: wrap;
-    width: 100vw; */
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto;
+    /* display: grid;
+    grid-template-columns: auto auto auto auto auto auto; */
     width: 100vw;
 }
 
@@ -33,7 +31,6 @@
     width: fit-content;
     height: 20px;
     margin: 0px;
-    background-color: aqua;
 }
 .p{
     font-weight: bold;
@@ -61,4 +58,16 @@
 
 .button:hover{
     cursor: pointer;
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+}
+
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 21px - 17px);
 }

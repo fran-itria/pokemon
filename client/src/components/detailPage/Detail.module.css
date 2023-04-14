@@ -1,0 +1,42 @@
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 21px - 17px);
+}
+
+.h1{
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-family:'Times New Roman', Times, serif
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px black;
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+.text{
+    margin-right: 20px;
+}
+.image{
+    width: 300px;
+    height: 300px;
+    margin-right: 20px;
+}
+.p{
+    text-transform: uppercase;
+}
+
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 21px - 17px);
+}

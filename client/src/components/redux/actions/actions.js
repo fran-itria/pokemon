@@ -6,6 +6,8 @@ export const CLEAN_POKEMON = 'CLEAN_POKEMON'
 export const GET_TYPES = 'GET_TYPES'
 export const FILTER = 'FILTER'
 export const ORDER = 'ORDER'
+export const DETAIL = 'DETAIL'
+export const CLEAN_DETAIL = 'CLEAN_DETAIL'
 
 const URL_BASE = 'http://localhost:3001'
 
@@ -44,3 +46,12 @@ export function order(value) {
     console.log(value)
     return { type: ORDER, payload: value }
 }
+
+export const detailPokemon = (id) => {
+    return async function (dispatch) {
+        const detail = await axios(`${URL_BASE}/pokemons/${id}`)
+        dispatch({ type: DETAIL, payload: detail.data })
+    }
+}
+
+// export function detail(id){}

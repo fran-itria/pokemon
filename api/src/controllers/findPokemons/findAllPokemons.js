@@ -4,7 +4,7 @@ const findPokemonsApi = require('./findPokemonsApi')
 const findAllPokemons = async (req, res) => {
     try {
         let pokemonsApi = []
-        for (let i = 1; i < 15; i++) {
+        for (let i = 1; i < 61; i++) {
             const pokemon = await findPokemonsApi(i)
             pokemonsApi.push(pokemon)
         }

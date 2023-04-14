@@ -1,11 +1,12 @@
-import { CLEAN_POKEMON, FILTER, GET_POKEMONS, GET_TYPES, ONE_POKEMON, ORDER } from "../actions/actions";
+import { CLEAN_POKEMON, DETAIL, FILTER, GET_POKEMONS, GET_TYPES, ONE_POKEMON, ORDER } from "../actions/actions";
 import filter from "./functionsReducer";
 
 const initialState = {
     pokemons: [],
     pokemonsCopy: [],
     onePokemon: [],
-    types: []
+    types: [],
+    detail: {}
 }
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -25,7 +26,8 @@ const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 pokemons: state.pokemonsCopy,
-                onePokemon: []
+                onePokemon: [],
+                detail: {}
             }
         case GET_TYPES:
             return {
@@ -52,6 +54,11 @@ const reducer = (state = initialState, { type, payload }) => {
                     ...state,
                     pokemons: pokemons.sort()
                 }
+            }
+        case DETAIL:
+            return {
+                ...state,
+                detail: payload
             }
         default:
             return state
