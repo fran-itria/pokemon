@@ -1,8 +1,9 @@
+import style from './Search.module.css'
 
 export default function () {
 
     return (
-        <div>
+        <div className={style.contenedor}>
             <input></input>
             <button>buscar</button>
         </div>

@@ -1,0 +1,29 @@
+.card{
+    border: solid black 2px;
+    width: 200px;
+    margin: 20px;
+    background-color: rgb(255, 194, 114);
+}
+
+.h1{
+    margin: 0px;
+}
+.image{
+    height: 200px;
+    width: 200px;
+    margin: 0px;
+}
+
+.p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.types{
+    margin: 0px;
+    display: flex;
+    justify-content: space-around;
+}
+.type{
+    background-color: rgb(141, 238, 255);
+    border: solid 2px blue;
+}

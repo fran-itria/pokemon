@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemons } from "../redux/actions/actions";
 import Pokemon from "../pokemon/Pokemon";
+import style from './Home.module.css'
 
 export default function Home() {
     const pokemons = useSelector(state => state.pokemons)
@@ -17,10 +18,22 @@ export default function Home() {
         dispatch(getPokemons())
     }, [])
 
-    const nextPage = () => {
-        if (slice.finish <= 48) {
-            setPage(page + 1)
-            setSlice({ init: slice.init + 12, finish: slice.finish + 12 })
+    const pagination = (event) => {
+        switch (event.target.name) {
+            case 'next':
+                // if (slice.finish <= 48) {
+                setPage(page + 1)
+                setTwelvePokemons({ init: twelvePokemons.init + 12, finish: twelvePokemons.finish + 12 })
+                // setSlice({ init: slice.init + 12, finish: slice.finish + 12 })
+                // }
+                break;
+            case 'prev':
+                // if (slice.finish > 12) {
+                setPage(page - 1)
+            // setSlice({ init: slice.init - 12, finish: slice.finish - 12 })
+            // }
+            default:
+                break;
         }
     }
 
@@ -31,30 +44,27 @@ export default function Home() {
         setTwelvePokemons(pokemons.slice(slice.init, slice.finish))
     }, [page])
 
-    useEffect(() => {
-        console.log(page)
-        console.log(slice)
-        console.log(twelvePokemons)
-    }, [twelvePokemons, page, slice])
-
     if (pokemons.length == 0) return <div>LOADING</div>
     return (
-        <div>
-            <h1>HOME COMPONENT</h1>
-            <div>
+        <div className={style.contenedor}>
+            <div className={style.pokemons}>
                 {twelvePokemons && twelvePokemons.map((pokemon) => {
+                    const { id, name, sprites, types } = pokemon
+                    const image = sprites.front_default
+                    const type = types.map(type => type.type.name)
                     return <Pokemon
-                        key={pokemon.id}
-                        id={pokemon.id}
-                        name={pokemon.name}
-                        image={pokemon.image}
-                        types={pokemon.types}
+                        key={'Pokemons con el id:' + id}
+                        id={id}
+                        name={name}
+                        image={image}
+                        types={type}
                     />
                 })}
             </div>
-            <div>
+            <div className={style.pagination}>
+                <button name="prev" onClick={(event) => pagination(event)} className={style.button}> Prev </button>
                 <p>{page}</p>
-                <button onClick={() => nextPage()}> > </button>
+                <button name='next' onClick={(event) => pagination(event)} className={style.button}> Next </button>
             </div>
         </div>
     )
