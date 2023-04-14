@@ -1,7 +1,12 @@
+import { useDispatch } from "react-redux"
+import { getTypes } from "../redux/actions/actions"
 
 export default function Landing({ init, setInit }) {
-
-    const startApp = () => setInit(!init)
+    const dispatch = useDispatch()
+    const startApp = () => {
+        setInit(!init)
+        dispatch(getTypes())
+    }
 
     return (
         <div>

@@ -1,11 +1,20 @@
 .contenedor{
-    --heihgNav: calc(22px + 14px);
+    --heihgNav: calc(22px + 17px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh - var(--heihgNav));
+    background-color: black;
+}
+.chico{
+    background-color: green;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(99vh - var(--heihgNav));
+    height: 100vh;
 }
+
 .pokemons{
     /* display: flex;
     justify-content: center;
@@ -14,13 +23,31 @@
     width: 100vw; */
     display: grid;
     grid-template-columns: auto auto auto auto auto auto;
+    width: 100vw;
 }
 
+.filtros{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: 20px;
+    margin: 0px;
+    background-color: aqua;
+}
+.p{
+    font-weight: bold;
+}
+.select{
+    height: 20px;
+}
 
 .pagination{
     display: flex;
     justify-content: center;
     display: fixed;
+    margin: 0px;
+    width: fit-content;
 }
 
 .button{

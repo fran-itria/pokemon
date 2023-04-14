@@ -2,6 +2,7 @@ const { Type } = require('../db')
 const axios = require('axios')
 
 const getTypes = async (req, res) => {
+    console.log('SE ESTA CREANDO LA TABLA')
     const typesDB = await Type.findAll()
     if (typesDB.length === 0) {
         const response = await axios('https://pokeapi.co/api/v2/type')
@@ -9,8 +10,10 @@ const getTypes = async (req, res) => {
         const typesNames = await typesApi.map(type => { return { name: type.name } })
         const allTypes = await Type.bulkCreate(typesNames)
         res.status(200).json(allTypes)
-    } else {
-        res.status(200).json({ error: 'Tabla de types ya creada' })
+    }
+    else {
+        console.log('tabla ya creada')
+        res.status(200).json(typesDB)
     }
 }
 
