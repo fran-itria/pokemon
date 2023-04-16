@@ -4,12 +4,11 @@ const findPokemonsApi = require('./findPokemonsApi')
 const findAllPokemons = async (req, res) => {
     try {
         let pokemonsApi = []
-        for (let i = 1; i < 61; i++) {
+        for (let i = 1; i < 24; i++) {
             const pokemon = await findPokemonsApi(i)
             pokemonsApi.push(pokemon)
         }
         const pokemonsDB = await Pokemon.findAll({
-            attributes: ['name', 'image'],
             include: {
                 model: Type,
                 attributes: ['name'],
@@ -18,8 +17,7 @@ const findAllPokemons = async (req, res) => {
                 }
             }
         })
-        const allPokemons = pokemonsApi.concat(pokemonsDB)
-        return res.status(200).json(allPokemons)
+        return res.status(200).json({pokemonsApi, pokemonsDB})
     } catch (error) {
         res.status(400).json({ error })
     }

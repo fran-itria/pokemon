@@ -1,7 +1,7 @@
 import React from "react";
 import style from './Pokemon.module.css'
 
-class Pokemon extends React.Component {
+class PokemonCard extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -21,4 +21,5 @@ class Pokemon extends React.Component {
     }
 }
 
-export default Pokemon
+export default PokemonCard
+

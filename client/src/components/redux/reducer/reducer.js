@@ -1,21 +1,27 @@
-import { CLEAN_POKEMON, DETAIL, FILTER, GET_POKEMONS, GET_TYPES, ONE_POKEMON, ORDER } from "../actions/actions";
-import filter from "./functionsReducer";
+import { CLEAN_POKEMON, DETAIL, FILTERS, FILTER_ORDER, GET_POKEMONS, GET_TYPES, ONE_POKEMON} from "../actions/actions";
+import filterOrder from "./functionsReducer";
 
 const initialState = {
     pokemons: [],
+    pokemonsApi: [],
+    pokemonsDB: [],
     pokemonsCopy: [],
     onePokemon: [],
     types: [],
-    detail: {}
+    detail: {},
+    filters: {}
 }
 
 const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case GET_POKEMONS:
+            const allPokemons = payload.pokemons.pokemonsApi.concat(payload.pokemons.pokemonsDB)
             return {
                 ...state,
-                pokemons: payload,
-                pokemonsCopy: payload
+                pokemons: filterOrder(state, {filter: payload.filter, order: payload.order}, allPokemons),
+                pokemonsCopy: allPokemons,
+                pokemonsApi: payload.pokemonsApi,
+                pokemonsDB: payload.pokemonsDB
             }
         case ONE_POKEMON:
             return {
@@ -34,31 +40,20 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 types: payload
             }
-        case FILTER:
+        case FILTER_ORDER:
             return {
                 ...state,
-                pokemons: filter(state, payload)
-            }
-        case ORDER:
-            const pokemons = [...state.pokemons]
-            console.log('pokemons')
-            console.log(pokemons)
-            if (payload == 'A-Z') {
-                return {
-                    ...state,
-                    pokemons: pokemons.sort()
-                }
-            }
-            if (payload == 'Z-A') {
-                return {
-                    ...state,
-                    pokemons: pokemons.sort()
-                }
+                pokemons: filterOrder(state, payload, null)
             }
         case DETAIL:
             return {
                 ...state,
                 detail: payload
+            }
+        case FILTERS:
+            return {
+                ...state, 
+                filters: {filter: payload.filter, order: payload.order}
             }
         default:
             return state
