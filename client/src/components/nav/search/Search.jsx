@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import style from './Search.module.css'
 import { useState } from 'react'
-import { onSearch } from '../redux/actions/actions'
+import { onSearch } from '../../redux/actions/actions'
 
 export default function () {
     const [text, setText] = useState('')

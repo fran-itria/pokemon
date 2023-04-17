@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Detail from "./components/detailPage/Detail";
-import Form from "./components/formPage/Form";
+import Create from "./components/createPage/Create";
 import Home from "./components/homePage/Home";
 import Landing from "./components/landingPage/Landing";
 import Nav from "./components/nav/Nav";
@@ -29,7 +29,7 @@ function App() {
       <Routes>
         <Route path='/home' element={<Home />} />
         <Route path='/detail/:id' element={<Detail />} />
-        <Route path='/create' element={<Form />} />
+        <Route path='/create' element={<Create />} />
       </Routes>
     </div>
   );
