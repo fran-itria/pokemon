@@ -4,7 +4,6 @@ const findOnePokemon = async (pokemonDB, idOrName, res) => {
     try {
         if (!pokemonDB) {
             const pokemon = await findPokemonsApi(idOrName)
-            console.log(pokemon)
             return res.status(200).json(pokemon)
         }
         return res.status(200).json(pokemonDB)
