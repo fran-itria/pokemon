@@ -1,4 +1,4 @@
-import { CLEAN_POKEMON, DETAIL, FILTERS, FILTER_ORDER, GET_POKEMONS, GET_TYPES, ONE_POKEMON} from "../actions/actions";
+import { API_DB, CLEAN_POKEMON, DETAIL, FILTERS, FILTER_ORDER, GET_POKEMONS, GET_TYPES, ONE_POKEMON } from "../actions/actions";
 import filterOrder from "./functionsReducer";
 
 const initialState = {
@@ -18,10 +18,10 @@ const reducer = (state = initialState, { type, payload }) => {
             const allPokemons = payload.pokemons.pokemonsApi.concat(payload.pokemons.pokemonsDB)
             return {
                 ...state,
-                pokemons: filterOrder(state, {filter: payload.filter, order: payload.order}, allPokemons),
+                pokemons: filterOrder(state, { select: payload.select, filter: payload.filter, order: payload.order }, payload.pokemons, allPokemons),
                 pokemonsCopy: allPokemons,
-                pokemonsApi: payload.pokemonsApi,
-                pokemonsDB: payload.pokemonsDB
+                pokemonsApi: payload.pokemons.pokemonsApi,
+                pokemonsDB: payload.pokemons.pokemonsDB
             }
         case ONE_POKEMON:
             return {
@@ -43,7 +43,7 @@ const reducer = (state = initialState, { type, payload }) => {
         case FILTER_ORDER:
             return {
                 ...state,
-                pokemons: filterOrder(state, payload, null)
+                pokemons: filterOrder(state, payload, { pokemonsApi: state.pokemonsApi, pokemonsDB: state.pokemonsDB }, state.pokemonsCopy)
             }
         case DETAIL:
             return {
@@ -52,8 +52,27 @@ const reducer = (state = initialState, { type, payload }) => {
             }
         case FILTERS:
             return {
-                ...state, 
-                filters: {filter: payload.filter, order: payload.order}
+                ...state,
+                filters: { select: payload.select, filter: payload.filter, order: payload.order }
+            }
+        case API_DB:
+            if (payload == 'todos') {
+                return {
+                    ...state,
+                    pokemons: state.pokemonsCopy
+                }
+            }
+            if (payload == 'api') {
+                return {
+                    ...state,
+                    pokemons: state.pokemonsApi
+                }
+            }
+            if (payload == 'creado') {
+                return {
+                    ...state,
+                    pokemons: state.pokemonsDB
+                }
             }
         default:
             return state

@@ -1,10 +1,10 @@
 
-export default function filterOrder(state, payload, allPokemons){
-    const { filter, order } = payload
+export default function filterOrder(state, filtros, pokemonsApiAndDB, allPokemons) {
+    const { select, filter, order } = filtros
     const pokemons = [...state.pokemonsCopy]
-    if (!filter && !order) {
-        return allPokemons
-    }
+
+    if(!filter && !order) return allPokemons
+
     if (filter && !order) {
         return filterPokemons(state, pokemons, filter)
     }
@@ -13,20 +13,20 @@ export default function filterOrder(state, payload, allPokemons){
     }
     if (filter && order) {
         const filtrados = filterPokemons(state, pokemons, filter)
-        if(filtrados.length != 0) return orderPokemons(filtrados, order)
+        if (filtrados.length != 0) return orderPokemons(filtrados, order)
         else return filtrados
     }
 }
 
-const filterPokemons = (state, pokemons, payload) => {
-    if (payload == 'All') return [...state.pokemonsCopy]
-    const filtrados = pokemons.filter(pokemon => pokemonApiOrDb(pokemon, payload))
+const filterPokemons = (state, pokemons, filtros) => {
+    if (filtros == 'All') return [...state.pokemonsCopy]
+    const filtrados = pokemons.filter(pokemon => pokemonApiOrDb(pokemon, filtros))
     if (filtrados.length > 0) return filtrados
     return {}
 }
 
-const orderPokemons = (pokemons, payload) => {
-    if (payload === 'A-Z') {
+const orderPokemons = (pokemons, filtros) => {
+    if (filtros === 'A-Z') {
         return pokemons.sort((a, b) => {
             if (a.name > b.name) {
                 return 1;
@@ -37,7 +37,7 @@ const orderPokemons = (pokemons, payload) => {
             }
         });
     }
-    if (payload ==='Z-A') {
+    if (filtros === 'Z-A') {
         return pokemons.sort((a, b) => {
             if (a.name > b.name) {
                 return -1;
@@ -48,8 +48,8 @@ const orderPokemons = (pokemons, payload) => {
             }
         });
     }
-    if (payload == 'ascendente') return extraerAttack(pokemons).sort((a, b) => a.attack - b.attack)
-    if (payload == 'descendente') return extraerAttack(pokemons).sort((a, b) => b.attack - a.attack)
+    if (filtros == 'ascendente') return extraerAttack(pokemons).sort((a, b) => a.attack - b.attack)
+    if (filtros == 'descendente') return extraerAttack(pokemons).sort((a, b) => b.attack - a.attack)
 }
 
 
@@ -69,16 +69,16 @@ function extraerAttack(pokemons) {
     return attack
 }
 
-function pokemonApiOrDb(pokemon, payload) {
+function pokemonApiOrDb(pokemon, filtros) {
     if (pokemon.types) {
         const types = pokemon.types.map(type => type.type.name)
         for (let i = 0; i < types.length; i++) {
-            if (types[i] == payload) return pokemon
+            if (types[i] == filtros) return pokemon
         }
     } else if (pokemon.Types) {
         const types = pokemon.Types.map(type => type.name)
         for (let i = 0; i < types.length; i++) {
-            if (types[i] == payload) return pokemon
+            if (types[i] == filtros) return pokemon
         }
     }
 }
