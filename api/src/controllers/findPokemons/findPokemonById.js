@@ -13,7 +13,6 @@ const findPokemonById = async (req, res) => {
                 }
             }
         })
-        console.log(pokemonDB)
         findOnePokemon(pokemonDB, idPokemon, res)
     } else findOnePokemon(null, idPokemon, res)
 }

@@ -1,8 +1,10 @@
+import { useEffect } from 'react'
 import style from '../Detail.module.css'
 import { useSelector } from "react-redux"
 
 export default function PokemonDB() {
     const detail = useSelector(state => state.detail)
+    useEffect(() => console.log(detail), [])
 
     return (
         <div>
@@ -13,9 +15,9 @@ export default function PokemonDB() {
                     <p className={style.p}>Hp: {detail.hp}</p>
                     <p className={style.p}>Attack: {detail.attack}</p>
                     <p className={style.p}>Deffence: {detail.deffence}</p>
-                    <p className={style.p}>Speed: {detail.velocity}</p>
-                    <p className={style.p}>height: {detail.height}</p>
-                    <p className={style.p}>weight: {detail.weight}</p>
+                    {detail.speed ? <p className={style.p}>Speed: {detail.speed}</p> : <></>}
+                    {detail.height ? <p className={style.p}>height: {detail.height}</p> : <></>}
+                    {detail.weight ? <p className={style.p}>weight: {detail.weight}</p> : <></>}
                     <p className={style.p}>
                         Type: {detail.Types.map(type => <p>{type.name}</p>)}
                     </p>

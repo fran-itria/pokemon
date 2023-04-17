@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-      velocity: {
+      speed: {
         type: DataTypes.INTEGER
       },
       height: {
