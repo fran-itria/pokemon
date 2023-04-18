@@ -50,10 +50,11 @@ export default function Form() {
                 } else delete errors[name]
             } else setErrors({ ...errors, [name]: `El campo ${name} debe ser completado obligatoriamente` })
         }
+        if (name == 'types') {
+            if (value.length == 0) setErrors({ ...errors, [name]: 'Debe haber mínimo un type seleccionado' })
+            else delete errors.types
+        }
     }
-    useEffect(() => {
-        console.log(campos)
-    }, [campos])
 
     const submit = (event) => {
         event.preventDefault()

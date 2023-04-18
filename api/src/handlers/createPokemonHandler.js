@@ -1,8 +1,9 @@
 const createPokemonController = require('../controllers/pokemonsControllers/createPokemonController')
 
 const createPokemonHandler = async (req, res) => {
-    const { image, hp, attack, deffence, speed, height, weight, types } = req.body
+    const { image, hp, attack, deffence, types } = req.body
     const name = req.body.name.toLowerCase()
+    let { speed, height, weight } = req.body
     try {
         const pokemonCreate = await createPokemonController(name, image, hp, attack, deffence, speed, height, weight, types)
         res.status(200).json(pokemonCreate)
