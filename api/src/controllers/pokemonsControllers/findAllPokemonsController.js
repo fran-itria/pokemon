@@ -1,7 +1,7 @@
 const { Pokemon, Type } = require('../../db')
-const findPokemonsApi = require('./findPokemonsApi')
+const findPokemonsApi = require('../findPokemonsFunctions/findPokemonsApi')
 
-const findAllPokemons = async (req, res) => {
+const findAllPokemonsController = async () => {
     try {
         let pokemonsApi = []
         for (let i = 1; i < 24; i++) {
@@ -17,11 +17,11 @@ const findAllPokemons = async (req, res) => {
                 }
             }
         })
-        return res.status(200).json({pokemonsApi, pokemonsDB})
+        return { pokemonsApi, pokemonsDB }
     } catch (error) {
-        res.status(400).json({ error })
+        next(error)
     }
 }
 
 
-module.exports = findAllPokemons
+module.exports = findAllPokemonsController

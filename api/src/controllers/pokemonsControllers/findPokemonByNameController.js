@@ -1,9 +1,8 @@
 const { Pokemon, Type } = require('../../db')
 // const { Op } = require('sequelize')
-const findOnePokemon = require('./findOnePokemon')
+const findOnePokemon = require('../findPokemonsFunctions/findOnePokemon')
 
-const findPokemonByName = async (req, res) => {
-    const name = req.query.name.toLowerCase()
+const findPokemonByNameController = async (name) => {
     const pokemonDB = await Pokemon.findOne({
         where: { name },
         include: {
@@ -14,7 +13,7 @@ const findPokemonByName = async (req, res) => {
             }
         }
     })
-    findOnePokemon(pokemonDB, name, res)
+    return findOnePokemon(pokemonDB, name)
 }
 
-module.exports = findPokemonByName
+module.exports = findPokemonByNameController

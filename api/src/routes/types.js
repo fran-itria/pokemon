@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const types = Router()
-const getTypes = require('../controllers/getTypes')
+const getTypesHandler = require('../handlers/getTypesHandler')
 
-types.get('/', getTypes)
+types.get('/', getTypesHandler)
 
 module.exports = types

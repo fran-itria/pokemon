@@ -1,8 +1,7 @@
 const { Pokemon, Type } = require('../../db')
-const findOnePokemon = require('./findOnePokemon')
+const findOnePokemon = require('../findPokemonsFunctions/findOnePokemon')
 
-const findPokemonById = async (req, res) => {
-    const { idPokemon } = req.params
+const findPokemonById = async (idPokemon) => {
     if (Number.isNaN(parseInt(idPokemon))) {
         const pokemonDB = await Pokemon.findByPk(idPokemon, {
             include: {
@@ -13,8 +12,8 @@ const findPokemonById = async (req, res) => {
                 }
             }
         })
-        findOnePokemon(pokemonDB, idPokemon, res)
-    } else findOnePokemon(null, idPokemon, res)
+        return findOnePokemon(pokemonDB, idPokemon)
+    } else return findOnePokemon(null, idPokemon)
 }
 
 module.exports = findPokemonById

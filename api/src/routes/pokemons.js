@@ -1,13 +1,12 @@
 const { Router } = require('express')
 const pokemons = Router()
-const findAllPokemons = require('../controllers/findPokemons/findAllPokemons')
-const createPokemon = require('../controllers/createPokemon')
-const findPokemonById = require('../controllers/findPokemons/findPokemonById')
-const findPokemonByName = require('../controllers/findPokemons/findPokemonByName')
+const findAllPokemonsHandler = require('../handlers/findAllPokemonsHandler')
+const createPokemonHandler = require('../handlers/createPokemonHandler')
+const findPokemonHandler = require('../handlers/findPokemonHandler')
 
-pokemons.get('/', findAllPokemons)
-pokemons.get('/name', findPokemonByName)
-pokemons.get('/:idPokemon', findPokemonById)
-pokemons.post('/', createPokemon)
+pokemons.get('/', findAllPokemonsHandler)
+pokemons.get('/name', findPokemonHandler)
+pokemons.get('/:idPokemon', findPokemonHandler)
+pokemons.post('/', createPokemonHandler)
 
 module.exports = pokemons
