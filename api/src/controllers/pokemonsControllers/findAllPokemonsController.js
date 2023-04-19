@@ -4,7 +4,7 @@ const findPokemonsApi = require('../findPokemonsFunctions/findPokemonsApi')
 const findAllPokemonsController = async () => {
     try {
         let pokemonsApi = []
-        for (let i = 1; i < 24; i++) {
+        for (let i = 1; i < 61; i++) {
             const pokemon = await findPokemonsApi(i)
             pokemonsApi.push(pokemon)
         }

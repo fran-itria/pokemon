@@ -12,7 +12,7 @@ const findPokemonById = async (idPokemon) => {
                 }
             }
         })
-        return findOnePokemon(pokemonDB, idPokemon)
+        return pokemonDB
     } else return findOnePokemon(null, idPokemon)
 }
 

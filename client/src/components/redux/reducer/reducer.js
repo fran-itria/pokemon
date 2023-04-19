@@ -6,7 +6,6 @@ const initialState = {
     pokemonsApi: [],
     pokemonsDB: [],
     pokemonsCopy: [],
-    onePokemon: [],
     types: [],
     detail: {},
     filters: {}
@@ -14,6 +13,11 @@ const initialState = {
 
 const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
+        case GET_TYPES:
+            return {
+                ...state,
+                types: payload
+            }
         case GET_POKEMONS:
             const allPokemons = payload.pokemons.pokemonsApi.concat(payload.pokemons.pokemonsDB)
             return {
@@ -26,19 +30,18 @@ const reducer = (state = initialState, { type, payload }) => {
         case ONE_POKEMON:
             return {
                 ...state,
-                onePokemon: [payload]
+                pokemons: [payload]
             }
         case CLEAN_POKEMON:
             return {
                 ...state,
                 pokemons: state.pokemonsCopy,
-                onePokemon: [],
                 detail: {}
             }
-        case GET_TYPES:
+        case FILTERS:
             return {
                 ...state,
-                types: payload
+                filters: { select: payload.select, filter: payload.filter, order: payload.order }
             }
         case FILTER_ORDER:
             return {
@@ -49,11 +52,6 @@ const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 detail: payload
-            }
-        case FILTERS:
-            return {
-                ...state,
-                filters: { select: payload.select, filter: payload.filter, order: payload.order }
             }
         case API_DB:
             if (payload == 'todos') {
