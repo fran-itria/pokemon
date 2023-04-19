@@ -15,7 +15,7 @@ const URL_BASE = 'http://localhost:3001'
 export function getPokemons(filtros) {
     return async function (dispatch) {
         const pokemons = await axios(`${URL_BASE}/pokemons`)
-        dispatch({ type: GET_POKEMONS, payload: { pokemons: pokemons.data, select:filtros.select, filter: filtros.filter, order: filtros.order } })
+        dispatch({ type: GET_POKEMONS, payload: { pokemons: pokemons.data, select: filtros.select, filter: filtros.filter, order: filtros.order } })
     }
 }
 
@@ -45,8 +45,12 @@ export const filterOrderPokemons = (select, filter, order) => {
 
 export const detailPokemon = (id) => {
     return async function (dispatch) {
-        const detail = await axios(`${URL_BASE}/pokemons/${id}`)
-        dispatch({ type: DETAIL, payload: detail.data })
+        try {
+            const detail = await axios(`${URL_BASE}/pokemons/${id}`)
+            dispatch({ type: DETAIL, payload: detail.data })
+        } catch (error) {
+            window.alert(error.response.data.error)
+        }
     }
 }
 
