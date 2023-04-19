@@ -1,25 +1,48 @@
 
-export default function filterOrder(state, filtros, pokemonsApiAndDB, allPokemons) {
+export default function filterOrder(state, filtros, ApiDB, allPokemons) {
     const { select, filter, order } = filtros
-    const pokemons = [...state.pokemonsCopy]
+    const pokemons = [...state.pokemons]
+    const api = ApiDB.pokemonsApi
+    const creados = ApiDB.pokemonsDB
 
-    if(!filter && !order) return allPokemons
+    if (!filter && !order) return allPokemons
+    
 
     if (filter && !order) {
-        return filterPokemons(state, pokemons, filter)
+        if (select == 'api') return api.filterPokemons(api, filter)
+        if (select == 'creado') return creados.filterPokemons(creados, filter)
+        if (select == 'todos') return allPokemons.filterPokemons(allPokemons, filter)
+        return filterPokemons(pokemons, filter)
     }
     if (!filter && order) {
+        if (select == 'api') return api.orderPokemons(api, filter)
+        if (select == 'creado') return creados.orderPokemons(creados, filter)
+        if (select == 'todos') return allPokemons.orderPokemons(allPokemons, filter)
         return orderPokemons(pokemons, order)
     }
     if (filter && order) {
-        const filtrados = filterPokemons(state, pokemons, filter)
+        if (select == 'api') {
+            const filtrados = filterPokemons(api, filter)
+            if (filtrados.length != 0) return orderPokemons(filtrados, order)
+            return filtrados
+        }
+        if (select == 'creado') {
+            const filtrados = filterPokemons(creados, filter)
+            if (filtrados.length != 0) return orderPokemons(filtrados, order)
+            return filtrados
+        }
+        if (select == 'todos') {
+            const filtrados = filterPokemons(allPokemons, filter)
+            if (filtrados.length != 0) return orderPokemons(filtrados, order)
+            return filtrados
+        }
+        const filtrados = filterPokemons(pokemons, filter)
         if (filtrados.length != 0) return orderPokemons(filtrados, order)
         else return filtrados
     }
 }
 
-const filterPokemons = (state, pokemons, filtros) => {
-    if (filtros == 'All') return [...state.pokemonsCopy]
+const filterPokemons = (pokemons, filtros) => {
     const filtrados = pokemons.filter(pokemon => pokemonApiOrDb(pokemon, filtros))
     if (filtrados.length > 0) return filtrados
     return {}
