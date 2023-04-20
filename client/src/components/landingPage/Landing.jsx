@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux"
 import { getTypes } from "../redux/actions/actions"
+import style from './Landing.module.css'
 
 export default function Landing({ init, setInit }) {
     const dispatch = useDispatch()
@@ -9,9 +10,8 @@ export default function Landing({ init, setInit }) {
     }
 
     return (
-        <div>
-            <h1>LANDING PAGE</h1>
-            <button onClick={() => startApp()}>Iniciar</button>
+        <div className={style.contenedor}>
+            <button onClick={() => startApp()} className={style.button}>START</button>
         </div>
     )
 }

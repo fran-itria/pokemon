@@ -36,7 +36,9 @@ export default function Home() {
     }
 
 
-    if (Array.isArray(pokemons) && pokemons.length == 0) return <h1 className={style.loading}>LOADING</h1>
+    if (Array.isArray(pokemons) && pokemons.length == 0) return <div className={style.contenedorLoading}>
+        <h1 className={style.loading}>Loading...</h1>
+    </div>
     return (
         <div className={style.contenedor}>
             {typeof pokemons == 'object' && !Array.isArray(pokemons) ?
@@ -46,6 +48,11 @@ export default function Home() {
                 </div>
                 :
                 <div className={style.chico}>
+                    <p className={style.p2}>
+                        Haciendo click sobre la targeta de cualquier pókemon, accederas a su detalle,
+                        y podras buscar mediante el buscador de la esquina superior derecha a cualquier pókemon,
+                        debes de buscarlo por su nombre exacto
+                    </p>
                     <FiltrosPokemon />
                     <AllPokemons twelvePokemons={twelvePokemons} />
                     <Pagination page={page} setPage={setPage} pokemons={pokemons} />

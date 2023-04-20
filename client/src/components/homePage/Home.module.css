@@ -1,11 +1,13 @@
-.contenedor{
+.contenedor {
     --heihgNav: calc(22px + 17px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: calc(100vh - var(--heihgNav));
+    background-color: 	#ACD9C4;
 }
-.chico{
+
+.chico {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,7 +15,7 @@
     height: 100vh;
 }
 
-.pokemons{
+.pokemons {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -24,7 +26,7 @@
     width: 100vw;
 }
 
-.filtros{
+.filtros {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,14 +34,30 @@
     height: 20px;
     margin: 0px;
 }
-.p{
+
+.p {
     font-weight: bold;
-}
-.select{
-    height: 20px;
+    margin-left: 30px;
 }
 
-.pagination{
+.select {
+    height: 20px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 10px 10px 0px 0px;
+    font-weight: bold;
+    color: red;
+}
+
+.p2{
+    margin-top: 0px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    width: 90vw;
+    color: rgb(12, 0, 182);
+}
+
+.pagination {
     display: flex;
     justify-content: center;
     display: fixed;
@@ -47,7 +65,7 @@
     width: fit-content;
 }
 
-.button{
+.button {
     height: 20px;
     margin: 20px;
     font-weight: bold;
@@ -56,18 +74,37 @@
     background-color: rgb(255, 163, 163);
 }
 
-.button:hover{
+.button:hover {
     cursor: pointer;
 }
 
-.link{
+.link {
     text-decoration: none;
     color: black;
 }
 
-.loading{
+
+@keyframes example {
+    0% { left: -200px; top: 0px; }
+    50% { left: 200px; top: 0px; }
+    100% { left: -200px; top: 0px; }
+}
+
+.contenedorLoading {
+    height: calc(100vh - 21px - 17px);
+    background-color: rgb(134, 247, 255);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 21px - 17px);
+}
+
+.loading {
+    position: relative;
+    border: solid black 5px;
+    border-radius: 50%;
+    padding: 15px;
+    background-color: white;
+    animation-name: example;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
 }

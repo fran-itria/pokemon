@@ -51,8 +51,8 @@ export default function FiltrosPokemon() {
                 <option ></option>
                 <option value='A-Z'>A-Z</option>
                 <option value='Z-A'>Z-A</option>
-                <option value='ascendente'>Ascendente</option>
-                <option value='descendente'>Descendente</option>
+                <option value='ascendente'>Ataque &#8679;</option> 
+                <option value='descendente'> Ataque &#8681;</option>
             </select>
         </div>
     )
