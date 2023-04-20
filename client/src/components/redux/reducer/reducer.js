@@ -1,5 +1,5 @@
 import { API_DB, CLEAN_POKEMON, DETAIL, FILTERS, FILTER_ORDER, GET_POKEMONS, GET_TYPES, ONE_POKEMON } from "../actions/actions";
-import filterOrder from "./functionsReducer";
+import filterOrder from "./functionsReducer/functionsReducer";
 
 const initialState = {
     pokemons: [],
@@ -52,25 +52,6 @@ const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 detail: payload
-            }
-        case API_DB:
-            if (payload == 'todos') {
-                return {
-                    ...state,
-                    pokemons: state.pokemonsCopy
-                }
-            }
-            if (payload == 'api') {
-                return {
-                    ...state,
-                    pokemons: state.pokemonsApi
-                }
-            }
-            if (payload == 'creado') {
-                return {
-                    ...state,
-                    pokemons: state.pokemonsDB
-                }
             }
         default:
             return state

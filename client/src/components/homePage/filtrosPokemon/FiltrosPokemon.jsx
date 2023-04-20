@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { apiOrDb, filterOrderPokemons, filters } from "../../redux/actions/actions";
+import { filterOrderPokemons, filters } from "../../redux/actions/actions";
 import style from '../Home.module.css'
 
 
@@ -33,7 +33,7 @@ export default function FiltrosPokemon() {
     return (
         <div className={style.filtros}>
             <p className={style.p}>Select pokemons: </p>
-            <select name='filter' onChange={(event) => dispatch(apiOrDb(event.target.value))} className={style.select}>
+            <select name='filter' onChange={(event) => selectPoke(event)} className={style.select}>
                 <option></option>
                 <option value='todos'>Todos</option>
                 <option value='api'>Pokemons de la Api</option>

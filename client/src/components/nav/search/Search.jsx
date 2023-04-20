@@ -8,7 +8,6 @@ export default function () {
     const dispatch = useDispatch()
 
     const onChange = (event) => {
-        console.log(event.target.value)
         setText(event.target.value)
     }
 

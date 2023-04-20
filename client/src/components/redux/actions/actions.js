@@ -57,7 +57,3 @@ export const detailPokemon = (id) => {
 export function filters(select, filter, order) {
     return { type: FILTERS, payload: { select, filter, order } }
 }
-
-export const apiOrDb = (value) => {
-    return { type: API_DB, payload: value }
-}
