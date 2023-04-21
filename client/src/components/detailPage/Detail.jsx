@@ -29,7 +29,7 @@ export default function Detail() {
                         :
                         <PokemonDB />
                     }
-                    <button onClick={() => navigate('/home')}>Volver a ver pokemons</button>
+                    <button onClick={() => navigate('/home')} className={style.button}>See Pokemons</button>
                 </div>
                 :
                 <div className={style.loading}>

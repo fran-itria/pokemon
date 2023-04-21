@@ -1,4 +1,4 @@
-import style from './Create.module.css'
+import style from './Errors.module.css'
 
 
 export default function ErrorsComponent({ errors }) {

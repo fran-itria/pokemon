@@ -1,0 +1,23 @@
+.contenedorTypes{
+    margin-top: 15px;
+}
+.types{
+    display: flex;
+    justify-content: space-between;
+}
+.buttonActive{
+    background-color: rgb(0, 255, 0);
+    border: none;
+    margin: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px;
+}
+.buttonDesactive{
+    background-color: rgb(255, 115, 115);
+    border: none;
+    margin: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px;
+}

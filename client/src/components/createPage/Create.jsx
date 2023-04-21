@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import style from './Create.module.css'
-import FormComponent from './FormComponent'
-import TypesComponent from './TypesComponent';
-import ErrorsComponent from './ErrorsComponent';
+import FormComponent from './form/FormComponent'
+import TypesComponent from './type/TypesComponent';
+import ErrorsComponent from './errors/ErrorsComponent';
 
 export default function Form() {
     const [campos, setCampos] = useState({
@@ -18,12 +18,10 @@ export default function Form() {
     })
     const [errors, setErrors] = useState({})
 
-
-
     return (
         <div className={style.contenedor}>
             <FormComponent errors={errors} setErrors={setErrors} campos={campos} setCampos={setCampos} />
-            <TypesComponent campos={campos} setCampos={setCampos} />
+            <TypesComponent campos={campos} setCampos={setCampos} errors={errors} setErrors={setErrors}/>
             <ErrorsComponent errors={errors} />
         </div>
     )

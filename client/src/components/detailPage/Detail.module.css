@@ -4,12 +4,19 @@
     justify-content: center;
     align-items: center;
     height: calc(100vh - 21px - 17px);
+    background-image: url('https://eltiempomx.com/cdn-cgi/image/format=auto,width=730/monclova/2022/12/639cfcbc432a6.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .h1{
     margin-bottom: 10px;
     text-transform: uppercase;
-    font-family:'Times New Roman', Times, serif
+    font-family:'Times New Roman', Times, serif;
+    background-color: rgb(139, 151, 255);
+    border: solid blue 4px;
+    box-shadow: rgb(0, 0, 148) 5px 5px;
+    text-shadow: white 2px 2px;
 }
 
 .info{
@@ -17,21 +24,62 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: solid 2px black;
+    border: solid 4px black;
+    box-shadow: rgb(255, 113, 113) 5px 5px;
     margin: 0px;
     margin-bottom: 20px;
+    background-color: rgb(181, 255, 255);
 }
 
 .text{
-    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    border: 10px solid transparent;
+    border-radius: 10px;
+    border-image: url('https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png') 49% round;
+    background-color: rgb(163, 156, 255);
+    font-weight: bold;
+
 }
+.type{
+    font-weight: bold;
+    text-transform: uppercase;
+    border: inset rgb(255, 166, 0) 5px;
+    width: 100px;
+}
+
 .image{
     width: 300px;
     height: 300px;
     margin-right: 20px;
 }
 .p{
+    margin: 20px;
     text-transform: uppercase;
+}
+
+.button{
+    border: none;
+    border-radius: 100%;
+    padding: 10px;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    box-shadow: white 0px -5px;
+}
+.button:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    box-shadow: white 0px -3px;
+}
+.button:active{
+    box-shadow: white 0px 0px;
 }
 
 .loading{

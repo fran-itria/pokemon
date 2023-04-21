@@ -1,9 +1,9 @@
 
-export default function validate(errors, setErrors, name, value) {
+export default function validate(errors, setErrors, name, value, campos) {
     verifyName(errors, setErrors, name, value)
     verifyImage(errors, setErrors, name, value)
     verifyHpAttackDeffence(errors, setErrors, name, value)
-    verifyTypes(errors, setErrors, name, value)
+    verifyTypes(errors, setErrors, campos)
 }
 
 function verifyName(errors, setErrors, name, value) {
@@ -40,9 +40,9 @@ function verifyHpAttackDeffence(errors, setErrors, name, value) {
     }
 }
 
-function verifyTypes(errors, setErrors, name, value) {
-    if (name == 'types') {
-        if (value.length == 0) setErrors({ ...errors, [name]: 'Debe haber mínimo un type seleccionado' })
-        else delete errors.types
+function verifyTypes(errors, setErrors, campos) {
+    if (campos.types.length == 0) {
+        setErrors({ ...errors, types: 'Debe haber mínimo un type seleccionado' })
     }
+    else delete errors.types
 }

@@ -34,7 +34,7 @@ class PokemonApi extends React.Component{
                     <img src={detail.sprites.other.dream_world.front_default} alt={detail.name} className={style.image} />
                     <div className={style.text}>
                         {detail.stats.map(stat => <p className={style.p}>{stat.stat.name}: {stat.base_stat}</p>)}
-                        <p className={style.p}>
+                        <p className={style.type}>
                             type: {detail.types.map(type => <p>{type.type.name}</p>)}
                         </p>
                     </div>

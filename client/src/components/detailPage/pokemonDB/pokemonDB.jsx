@@ -20,7 +20,7 @@ class PokemonDB extends React.Component{
                     {detail.speed ? <p className={style.p}>Speed: {detail.speed}</p> : <></>}
                     {detail.height ? <p className={style.p}>height: {detail.height}</p> : <></>}
                     {detail.weight ? <p className={style.p}>weight: {detail.weight}</p> : <></>}
-                    <p className={style.p}>
+                    <p className={style.type}>
                         Type: {detail.Types.map(type => <p>{type.name}</p>)}
                     </p>
                 </div>
