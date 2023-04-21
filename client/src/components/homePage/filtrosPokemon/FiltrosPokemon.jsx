@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterOrderPokemons, filters } from "../../redux/actions/actions";
-import style from '../Home.module.css'
+import style from './FiltrosPokemon.module.css'
 
 
 export default function FiltrosPokemon() {

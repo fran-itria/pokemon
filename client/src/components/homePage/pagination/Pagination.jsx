@@ -1,6 +1,6 @@
-import style from '../Home.module.css'
+import style from './Pagination.module.css'
 
-export default function Pagination({page, setPage, pokemons}){
+export default function Pagination({ page, setPage, pokemons }) {
 
     const pagination = (event) => {
         switch (event.target.name) {
@@ -21,7 +21,7 @@ export default function Pagination({page, setPage, pokemons}){
     return (
         <div className={style.pagination}>
             <button name="prev" onClick={(event) => pagination(event)} className={style.button}> Prev </button>
-            <p>{page.pag}</p>
+            <p className={style.page}>{page.pag}</p>
             <button name='next' onClick={(event) => pagination(event)} className={style.button}> Next </button>
         </div>
     )

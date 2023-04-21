@@ -2,3 +2,11 @@
     position: absolute;
     right: 10px;
 }
+
+.button{
+    background: linear-gradient(to right, red, white, red);
+    border: none;
+    font-weight: bold;
+    margin-left: 2px;
+    border-radius: 20px;
+}

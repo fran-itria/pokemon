@@ -17,8 +17,9 @@
 }
 
 .p{
-    margin-top: 0px;
+    margin-top: 5px;
     margin-bottom: 0px;
+    font-family: cursive ;
 }
 .types{
     margin: 0px;
@@ -26,6 +27,10 @@
     justify-content: space-around;
 }
 .type{
-    background-color: rgb(141, 238, 255);
-    border: solid 2px blue;
+    margin-top: 0px;
+    font-style: italic;
+    font-weight: bold;
+    color: white;
+    text-shadow: red -3px 0px;
+    font-size: 20px;
 }

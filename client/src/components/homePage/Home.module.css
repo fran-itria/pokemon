@@ -15,40 +15,6 @@
     height: 100vh;
 }
 
-.pokemons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-content: center;
-    flex-wrap: wrap;
-    /* display: grid;
-    grid-template-columns: auto auto auto auto auto auto; */
-    width: 100vw;
-}
-
-.filtros {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    height: 20px;
-    margin: 0px;
-}
-
-.p {
-    font-weight: bold;
-    margin-left: 30px;
-}
-
-.select {
-    height: 20px;
-    margin-left: 5px;
-    border: none;
-    border-radius: 10px 10px 0px 0px;
-    font-weight: bold;
-    color: red;
-}
-
 .p2{
     margin-top: 0px;
     font-weight: bold;
@@ -57,12 +23,9 @@
     color: rgb(12, 0, 182);
 }
 
-.pagination {
-    display: flex;
-    justify-content: center;
-    display: fixed;
-    margin: 0px;
-    width: fit-content;
+.p {
+    font-weight: bold;
+    margin-left: 30px;
 }
 
 .button {
@@ -78,12 +41,6 @@
     cursor: pointer;
 }
 
-.link {
-    text-decoration: none;
-    color: black;
-}
-
-
 @keyframes example {
     0% { left: -200px; top: 0px; }
     50% { left: 200px; top: 0px; }
@@ -92,7 +49,7 @@
 
 .contenedorLoading {
     height: calc(100vh - 21px - 17px);
-    background-color: rgb(134, 247, 255);
+    background-color: #ACD9C4;
     display: flex;
     justify-content: center;
     align-items: center;

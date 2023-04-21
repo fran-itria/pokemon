@@ -1,0 +1,24 @@
+.filtros {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: 20px;
+    margin: 0px;
+}
+.p {
+    font-weight: bold;
+    margin-left: 30px;
+}
+.select {
+    height: 20px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 10px 10px 0px 0px;
+    font-weight: bold;
+    color: #CCE0F0;
+    background-color: #B80000;
+}
+.select input{
+    border: solid white 5px;
+}

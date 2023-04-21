@@ -19,8 +19,8 @@ class Search extends React.Component {
         const { onSearch } = this.props
         return (
             <div className={style.contenedor}>
-                <input onChange={(event) => this.onChange(event)}></input>
-                <button onClick={() => onSearch(text)}>buscar</button>
+                <input onChange={(event) => this.onChange(event)} placeholder='Search pokemon'></input>
+                <button onClick={() => onSearch(text)} className={style.button}>Search</button>
             </div>
         )
     }

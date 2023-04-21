@@ -1,0 +1,28 @@
+.pokemons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+    /* display: grid;
+    grid-template-columns: auto auto auto auto auto auto; */
+    width: 100vw;
+}
+
+.button {
+    height: 20px;
+    margin: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(255, 163, 163);
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}

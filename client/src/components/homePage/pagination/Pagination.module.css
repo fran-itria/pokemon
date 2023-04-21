@@ -1,0 +1,29 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    width: fit-content;
+}
+
+.page {
+    margin: 0px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.button {
+    /* height: 20px; */
+    margin: 20px;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #B80000;
+    color: #9de5ff;
+}
+
+.button:hover {
+    cursor: pointer;
+}
