@@ -17,7 +17,7 @@ const findAllPokemonsController = async () => {
                 }
             }
         })
-        return { pokemonsApi, pokemonsDB }
+        return pokemonsApi.concat(pokemonsDB)
     } catch (error) {
         next(error)
     }

@@ -24,12 +24,7 @@ export default function Home() {
         if (pokemons.lenght != 0 && Array.isArray(pokemons)) {
             setTwelvePokemons(pokemons.slice(page.init, page.finish))
         } else setTwelvePokemons(pokemons)
-    }, [pokemons])
-    useEffect(() => {
-        if (Array.isArray(pokemons)) {
-            setTwelvePokemons(pokemons.slice(page.init, page.finish))
-        }
-    }, [page])
+    }, [pokemons, page])
 
     const allPokemons = () => {
         dispatch(cleanPokemon())
