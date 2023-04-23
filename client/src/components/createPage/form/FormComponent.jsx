@@ -9,7 +9,7 @@ export default function FormComponent({errors, setErrors, campos, setCampos}) {
         const name = event.target.name
         const value = event.target.value
         setCampos({ ...campos, [name]: value })
-        validate(errors, setErrors, name, value, campos)
+        setErrors(validate({...campos, [name]: value}))
     }
 
     const submit = (event) => {
@@ -75,11 +75,7 @@ export default function FormComponent({errors, setErrors, campos, setCampos}) {
                     <input name='weight' onChange={(event) => onChange(event)} value={campos.weight}></input>
                     <label>kg</label>
                 </div>
-                <div className={style.inputs}>
-                    <label className={style.label}>Types: </label>
-                    <input name='types' value={campos.types}></input>
-                </div>
-                <button type='submit' className={Object.keys(errors).length > 0 ? style.disabled : style.active}>CREAR</button>
+                <button type='submit' className={Object.keys(errors).length > 0 ? style.disabled : style.active}>CREATE</button>
             </form>
         </div>
     )

@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import style from "./Types.module.css";
 import { useSelector } from "react-redux";
+import validate from "../form/ValidateFunction.js";
 
-export default function TypesComponent({ campos, setCampos }) {
+export default function TypesComponent({ campos, setCampos, setErrors }) {
   const types = useSelector((state) => state.types);
   const [active, setActive] = useState([]);
 
@@ -13,17 +14,14 @@ export default function TypesComponent({ campos, setCampos }) {
     if (!campos.types.includes(value)) {
       setActive([...active, value]);
       setCampos({ ...campos, types: [...campos.types, value] });
+      setErrors(validate({...campos, types: [...campos.types, value] }))
     } else {
-      const values = copy.filter((elemento) => elemento != value);
-      setCampos({ ...campos, types: values });
       const desactives = actives.filter((element) => element != value);
       setActive(desactives);
+      setCampos({ ...campos, types: desactives });
+      setErrors(validate({...campos, types: desactives }))
     }
   }
-
-  useEffect(() => {
-    console.log(campos.types);
-  }, [campos]);
 
   return (
     <div className={style.contenedorTypes}>

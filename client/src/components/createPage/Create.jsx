@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import style from './Create.module.css'
 import FormComponent from './form/FormComponent'
 import TypesComponent from './type/TypesComponent';
@@ -21,7 +21,7 @@ export default function Form() {
     return (
         <div className={style.contenedor}>
             <FormComponent errors={errors} setErrors={setErrors} campos={campos} setCampos={setCampos} />
-            <TypesComponent campos={campos} setCampos={setCampos} errors={errors} setErrors={setErrors}/>
+            <TypesComponent campos={campos} setCampos={setCampos} setErrors={setErrors}/>
             <ErrorsComponent errors={errors} />
         </div>
     )
