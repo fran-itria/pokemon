@@ -21,6 +21,11 @@ export default function Home() {
         dispatch(getPokemons(filtros))
     }, [])
     useEffect(() => {
+        console.log(pokemons)
+        if(page.pag != 1 && pokemons.length == 1){
+            setPage({...page, pag: 1, init: 0, finish: 12})
+            setTwelvePokemons(pokemons.slice(page.init, page.finish))
+        }
         if (pokemons.lenght != 0 && Array.isArray(pokemons)) {
             setTwelvePokemons(pokemons.slice(page.init, page.finish))
         } else setTwelvePokemons(pokemons)

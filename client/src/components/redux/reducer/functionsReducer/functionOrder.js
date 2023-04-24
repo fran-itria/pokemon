@@ -21,8 +21,8 @@ export default function orderPokemons(pokemons, filtros) {
             }
         });
     }
-    if (filtros == 'ascendente') return extraerAttack(pokemons).sort((a, b) => a.attack - b.attack)
-    if (filtros == 'descendente') return extraerAttack(pokemons).sort((a, b) => b.attack - a.attack)
+    if (filtros === 'ascendente') return extraerAttack(pokemons).sort((a, b) => a.attack - b.attack)
+    if (filtros === 'descendente') return extraerAttack(pokemons).sort((a, b) => b.attack - a.attack)
 }
 
 
@@ -32,7 +32,7 @@ function extraerAttack(pokemons) {
     pokemons.forEach(pokemon => {
         if (pokemon.stats) {
             pokemon.stats.forEach(stat => {
-                if (stat.stat.name == 'attack') {
+                if (stat.stat.name === 'attack') {
                     attack.push({ ...pokemon, attack: stat.base_stat })
                 }
             })
