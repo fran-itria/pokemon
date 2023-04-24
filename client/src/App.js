@@ -5,7 +5,7 @@ import Create from "./components/createPage/Create";
 import Home from "./components/homePage/Home";
 import Landing from "./components/landingPage/Landing";
 import Nav from "./components/nav/Nav";
-import { Route, Router, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 function App() {
   const { pathname } = useLocation()
@@ -20,10 +20,9 @@ function App() {
   return (
     <div className="App">
       {pathname !== '/' ?
-        <Nav />
+        <Nav setInit={setInit}/>
         :
         <Landing
-          init={init}
           setInit={setInit}
         />}
       <Routes>

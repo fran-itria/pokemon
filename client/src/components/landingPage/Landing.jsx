@@ -1,17 +1,22 @@
-import { useDispatch } from "react-redux"
-import { getTypes } from "../redux/actions/actions"
-import style from './Landing.module.css'
+import { useDispatch, useSelector } from "react-redux";
+import { getTypes } from "../redux/actions/actions";
+import style from "./Landing.module.css";
 
-export default function Landing({ init, setInit }) {
-    const dispatch = useDispatch()
-    const startApp = () => {
-        setInit(!init)
-        dispatch(getTypes())
+export default function Landing({ setInit }) {
+  const types = useSelector((state) => state.types);
+  const dispatch = useDispatch();
+  const startApp = () => {
+    setInit(true);
+    if (types.length == 0) {
+      dispatch(getTypes());
     }
+  };
 
-    return (
-        <div className={style.contenedor}>
-            <button onClick={() => startApp()} className={style.button}>START</button>
-        </div>
-    )
+  return (
+    <div className={style.contenedor}>
+      <button onClick={() => startApp()} className={style.button}>
+        START
+      </button>
+    </div>
+  );
 }

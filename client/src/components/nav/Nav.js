@@ -3,11 +3,14 @@ import Search from "./search/Search";
 import style from './Nav.module.css'
 
 
-export default function Nav() {
+export default function Nav({setInit}) {
 
     return (
         <div>
             <nav className={style.nav}>
+                <div>
+                    <button onClick={() => setInit(false)}> Inicio </button>
+                </div>
                 <div className={style.home}>
                     <NavLink to={'/home'} className={({ isActive }) => isActive ? style.active : style.disable}>Home</NavLink>
                 </div>
