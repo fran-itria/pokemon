@@ -15,7 +15,10 @@ export default function filterOrder(filtros, ApiDB) {
 }
 
 function pokemonsFiltersOrder(filter, order, pokemonsAplicate) {
-  if (!filter && !order) return pokemonsAplicate;
+  if (!filter && !order) {
+    if(pokemonsAplicate.length != 0) return pokemonsAplicate
+    else return {}
+  };
   if (filter && !order) return filterPokemons(pokemonsAplicate, filter);
   if (!filter && order) return orderPokemons(pokemonsAplicate, order);
   if (filter && order) {
