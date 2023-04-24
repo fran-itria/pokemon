@@ -2,7 +2,7 @@ const { Pokemon, Type } = require('../../db')
 const findOnePokemon = require('../findPokemonsFunctions/findOnePokemon')
 
 const findPokemonById = async (idPokemon) => {
-    if (Number.isNaN(parseInt(idPokemon))) {
+    if (idPokemon.length == 36) {
         const pokemonDB = await Pokemon.findByPk(idPokemon, {
             include: {
                 model: Type,
