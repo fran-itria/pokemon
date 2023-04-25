@@ -22,15 +22,24 @@ module.exports = (sequelize) => {
       },
       hp: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          isInt: true
+        }
       },
       attack: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          isInt: true
+        }
       },
       deffence: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          isInt: true
+        }
       },
       speed: {
         type: DataTypes.INTEGER
