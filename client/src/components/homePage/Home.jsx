@@ -20,38 +20,44 @@ export default function Home() {
     useEffect(() => {
         dispatch(getPokemons(filtros))
     }, [])
+
     useEffect(() => {
-        console.log(pokemons)
-        if(page.pag != 1 && pokemons.length == 1){
-            setPage({...page, pag: 1, init: 0, finish: 12})
-            setTwelvePokemons(pokemons.slice(page.init, page.finish))
+        if(Array.isArray(pokemons)){
+            if(page.pag != 1){
+                setPage({...page, pag: 1, init: 0, finish: 12})
+                setTwelvePokemons(pokemons.slice(page.init, page.finish))
+            } else setTwelvePokemons(pokemons.slice(page.init, page.finish))
         }
+    }, [pokemons])
+    useEffect(() => {
         if (pokemons.lenght != 0 && Array.isArray(pokemons)) {
             setTwelvePokemons(pokemons.slice(page.init, page.finish))
         } else setTwelvePokemons(pokemons)
-    }, [pokemons, page])
+    }, [page])
 
     const allPokemons = () => {
         dispatch(cleanPokemon())
     }
 
 
-    if (Array.isArray(pokemons) && pokemons.length == 0) return <div className={style.contenedorLoading}>
+    if (Array.isArray(twelvePokemons) && twelvePokemons.length == 0) {
+        return <div className={style.contenedorLoading}>
         <h1 className={style.loading}>Loading...</h1>
     </div>
+    }
     return (
         <div className={style.contenedor}>
             {typeof pokemons == 'object' && !Array.isArray(pokemons) ?
                 <div>
-                    <p className={style.p}>Pokemons de ese tipo no encontrados</p>
-                    <button onClick={() => allPokemons()} className={style.button}> Mostrar todos los pokemons </button>
+                    <p className={style.p}>Pokemons of this type not found</p>
+                    <button onClick={() => allPokemons()} className={style.button}> See all pokemons </button>
                 </div>
                 :
                 <div className={style.chico}>
                     <p className={style.p2}>
-                        Haciendo click sobre la targeta de cualquier pókemon, accederas a su detalle,
-                        y podras buscar mediante el buscador de la esquina superior derecha a cualquier pókemon,
-                        debes de buscarlo por su nombre exacto
+                        By clicking on the card of any pokemon, you will access its details,
+                        and you can search through the search engine in the upper right corner for any pokemon,
+                        You must search for it by its exact name
                     </p>
                     <FiltrosPokemon />
                     <AllPokemons twelvePokemons={twelvePokemons} />

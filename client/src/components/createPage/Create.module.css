@@ -1,9 +1,10 @@
 .contenedor{
+    --heihgNav: calc(32px); 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: calc(100vh - 22px - 17px);
+    height: calc(100vh - var(--heihgNav));
     background-image: url('https://images.wikidexcdn.net/mwuploads/wikidex/thumb/c/c8/latest/20220221171901/Artwork_aventura_en_Kanto.png/1200px-Artwork_aventura_en_Kanto.png');
     background-repeat: no-repeat;
     background-size: cover;

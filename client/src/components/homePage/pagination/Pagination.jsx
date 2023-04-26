@@ -3,15 +3,16 @@ import style from './Pagination.module.css'
 export default function Pagination({ page, setPage, pokemons }) {
 
     const pagination = (event) => {
+        const limit = 12
         switch (event.target.name) {
             case 'next':
-                if (page.pag < pokemons.length / 12) {
-                    setPage({ pag: page.pag + 1, init: page.init + 12, finish: page.finish + 12 })
+                if (page.pag < pokemons.length / limit) {
+                    setPage({ pag: page.pag + 1, init: page.init + limit, finish: page.finish + limit })
                 }
                 break;
             case 'prev':
                 if (page.pag > 1) {
-                    setPage({ pag: page.pag - 1, init: page.init - 12, finish: page.finish - 12 })
+                    setPage({ pag: page.pag - 1, init: page.init - limit, finish: page.finish - limit })
                 }
             default:
                 break;

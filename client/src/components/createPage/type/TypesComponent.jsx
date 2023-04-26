@@ -14,17 +14,18 @@ export default function TypesComponent({ campos, setCampos, setErrors }) {
     if (!campos.types.includes(value)) {
       setActive([...active, value]);
       setCampos({ ...campos, types: [...campos.types, value] });
-      setErrors(validate({...campos, types: [...campos.types, value] }))
+      setErrors(validate({ ...campos, types: [...campos.types, value] }));
     } else {
       const desactives = actives.filter((element) => element != value);
       setActive(desactives);
       setCampos({ ...campos, types: desactives });
-      setErrors(validate({...campos, types: desactives }))
+      setErrors(validate({ ...campos, types: desactives }));
     }
   }
 
   return (
     <div className={style.contenedorTypes}>
+      <p className={style.p}>Select type for you pokemon:</p>
       <div className={style.types}>
         {types.map((type) => (
           <button
@@ -37,7 +38,7 @@ export default function TypesComponent({ campos, setCampos, setErrors }) {
                 : style.buttonDesactive
             }
           >
-            {type.id} {type.name}
+            {type.name}
           </button>
         ))}
       </div>

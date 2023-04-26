@@ -1,5 +1,5 @@
 .contenedor {
-    --heihgNav: calc(22px + 17px);
+    --heihgNav: calc(32px);
     display: flex;
     flex-direction: column;
     justify-content: center;

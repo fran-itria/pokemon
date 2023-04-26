@@ -33,7 +33,7 @@ export default function Detail() {
                 </div>
                 :
                 <div className={style.loading}>
-                    <h1 className={style.h1}>Cargando detalle</h1>
+                    <h1 className={style.h1}>Loading...</h1>
                 </div>
             }
         </div >

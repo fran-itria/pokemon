@@ -1,38 +1,44 @@
 export default function validate(campos) {
   const imageURL = /^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|png|gif)$/;
+  const characters = /^[a-zA-Z0-9]+$/;
   let errors = {};
 
   if (campos.name.length != 0) {
     if (campos.name[0] != campos.name[0].toUpperCase()) {
-      errors.name = "El nombre debe iniciar con letra mayuscula";
-    } else if (campos.name.length <= 5)
-      errors.name = "El nombre debe tener mas de 5 caracteres";
-  } else errors.name = "El campo nombre debe ser completado obligatoriamente";
+      errors.name = "The name must start with a upper letter";
+    } else if (campos.name.length <= 5) {
+      errors.name = "The name must have more than 5 characters";
+    } else if (!characters.test(campos.name)) {
+      errors.name = "The name cannot contain special characters";
+    }
+  } else errors.name = "The name field must be completed";
 
   if (!imageURL.test(campos.image)) {
     errors.image =
-      "El campo de imagen debe ser una url valida para imagenes, debe terminar con el formato de la imagen (jpg,jpeg,png,gif)";
+      "The image must be a valid url for images (jpg,jpeg,png,gif)";
   }
 
   if (!parseInt(campos.hp)) {
-    errors.hp = "La vida debe ser un número";
-  } else if (campos.hp < 100) errors.hp = "La vida debe ser 100 o superior";
+    errors.hp = "Hp should be a number";
+  } else if (campos.hp < 100) errors.hp = "Hp must be 100 or higher";
+  else if (!Number.isInteger(Number(campos.deffence))) {
+    errors.deffence = "Hp should be a integer number";
+  }
 
   if (!parseInt(campos.attack)) {
-    errors.attack = "El ataque debe ser un número";
-  } else if (!Number.isInteger(parseInt(campos.attack))) {
-    errors.attack = "El ataque debe ser un número entero";
+    errors.attack = "Attack should be a number";
+  } else if (!Number.isInteger(Number(campos.attack))) {
+    errors.attack = "Attack should be a integer number";
   }
 
   if (!parseInt(campos.deffence)) {
-    errors.deffence = "El defensa debe ser un número";
-  } else if (!Number.isInteger(parseInt(campos.deffence)))
-    errors.deffence = "La defensa debe ser un número entero";
+    errors.deffence = "Deffence should be a number";
+  } else if (!Number.isInteger(Number(campos.deffence)))
+    errors.deffence = "Deffence should be a integer number";
 
   if (campos.types.length != 0) {
-    if (campos.types.length > 4)
-      errors.types = "Puede haber un máximo de 4 types seleccionados";
-  } else errors.types = "Debe haber mínimo un type seleccionado";
+    if (campos.types.length > 4) errors.types = "Maximum of 4 types selected";
+  } else errors.types = "There must be at least one type selected";
 
   return errors;
 }
