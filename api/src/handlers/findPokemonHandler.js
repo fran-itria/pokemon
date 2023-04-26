@@ -1,7 +1,7 @@
 const findPokemonByIdController = require("../controllers/pokemonsControllers/findPokemonByIdController");
 const findPokemonByNameController = require("../controllers/pokemonsControllers/findPokemonByNameController");
 
-const findPokemonHandler = async (req, res, next) => {
+const findPokemonHandler = async (req, res) => {
   try {
     if (Object.keys(req.query).length != 0) {
       const name = req.query.name.toLowerCase();
@@ -9,7 +9,7 @@ const findPokemonHandler = async (req, res, next) => {
       res.status(200).json(pokemon);
     } else if (req.params) {
       const { idPokemon } = req.params;
-      const pokemon = await findPokemonByIdController(idPokemon, next);
+      const pokemon = await findPokemonByIdController(idPokemon);
       res.status(200).json(pokemon);
     }
   } catch (error) {

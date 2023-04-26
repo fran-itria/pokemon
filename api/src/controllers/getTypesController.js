@@ -13,14 +13,3 @@ const getTypesController = async () => {
 }
 
 module.exports = getTypesController
-
-// PROMISES
-
-// axios('https://pokeapi.co/api/v2/type')
-//     .then(response => {
-//         const typesApi = response.data.results
-//         const typesNames = typesApi.map(type => { return { name: type.name } })
-//         return typesNames
-//     })
-//     .then(types => Type.bulkCreate(types))
-//     .then(allTypes => res.status(200).json(allTypes))

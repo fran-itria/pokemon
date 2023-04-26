@@ -8,7 +8,6 @@ export default function TypesComponent({ campos, setCampos, setErrors }) {
   const [active, setActive] = useState([]);
 
   function addType(event) {
-    const copy = [...campos.types];
     const actives = [...active];
     const value = parseInt(event.target.value);
     if (!campos.types.includes(value)) {

@@ -32,7 +32,6 @@ export default function AllPokemons({ twelvePokemons }) {
                     const type = Types.map(type => type.name)
                     return <Link to={`/detail/${id}`} className={style.link}>
                         <PokemonCard
-                            key={'Pokemon ' + name}
                             id={id}
                             name={name}
                             image={image}
@@ -56,7 +55,7 @@ export default function AllPokemons({ twelvePokemons }) {
                                     types={type}
                                 />
                             </Link>
-                            <button onClick={() => allPokemons()} className={style.button}> Mostrar todos los pokemons </button>
+                            <button onClick={() => allPokemons()} className={style.button}> See all Pokemons </button>
                         </div>
                     }
                     else {
@@ -72,12 +71,12 @@ export default function AllPokemons({ twelvePokemons }) {
                                     types={type}
                                 />
                             </Link>
-                            <button onClick={() => allPokemons()} className={style.button}> Mostrar todos los pokemons </button>
+                            <button onClick={() => allPokemons()} className={style.button}> See all Pokemons </button>
                         </div>
                     }
                 })
                     :
-                    <button onClick={() => allPokemons()} className={style.button}> Mostrar todos los pokemons </button>
+                    <button onClick={() => allPokemons()} className={style.button}> See all Pokemons </button>
             }
         </div>
     )

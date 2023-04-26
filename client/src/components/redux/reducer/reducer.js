@@ -2,11 +2,11 @@ import { CLEAN_POKEMON, DETAIL, FILTERS, FILTER_ORDER, GET_POKEMONS, GET_TYPES, 
 import filterOrder from "./functionsReducer/functionsReducer";
 
 const initialState = {
+    types: [],
     pokemons: [],
     pokemonsCopy: [],
-    types: [],
-    detail: {},
-    filters: {}
+    filters: {},
+    detail: {}
 }
 
 const reducer = (state = initialState, { type, payload }) => {
