@@ -52,8 +52,8 @@ export const detailPokemon = (id) => {
     }
 }
 
-export function cleanPokemon() {
-    return { type: CLEAN_POKEMON }
+export function cleanPokemon(pokemons) {
+    return { type: CLEAN_POKEMON, payload: pokemons }
 }
 
 

@@ -43,10 +43,19 @@ const reducer = (state = initialState, { type, payload }) => {
                 detail: payload
             }
         case CLEAN_POKEMON:
-            return {
-                ...state,
-                pokemons: state.pokemonsCopy,
-                detail: {}
+            if(payload == 'allPokemons'){
+                return {
+                    ...state,
+                    pokemons: state.pokemonsCopy,
+                    detail: {}
+                }
+            }
+            if(payload == 'cleanPokemons'){
+                return {
+                    ...state,
+                    pokemons: [],
+                    detail: {}
+                }
             }
         default:
             return state

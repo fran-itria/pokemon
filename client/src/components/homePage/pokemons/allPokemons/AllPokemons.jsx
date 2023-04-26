@@ -1,16 +1,9 @@
 import style from './AllPokemons.module.css'
 import PokemonCard from "../pokemonCard/PokemonCard";
 import { Link } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { cleanPokemon } from "../../../redux/actions/actions";
 
-export default function AllPokemons({ twelvePokemons }) {
+export default function AllPokemons({ twelvePokemons, allPokemons }) {
 
-    const dispatch = useDispatch()
-
-    const allPokemons = () => {
-        dispatch(cleanPokemon())
-    }
     return (
         <div className={style.pokemons}>
             {Array.isArray(twelvePokemons) && twelvePokemons.length > 1 ? twelvePokemons.map((pokemon) => {

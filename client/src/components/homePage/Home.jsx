@@ -19,10 +19,11 @@ export default function Home() {
 
     useEffect(() => {
         dispatch(getPokemons(filtros))
+        return () => dispatch(cleanPokemon('cleanPokemons'))
     }, [])
 
     useEffect(() => {
-        if(Array.isArray(pokemons)){
+        if(Array.isArray(pokemons) && pokemons.length != 0){
             if(page.pag != 1){
                 setPage({...page, pag: 1, init: 0, finish: 12})
                 setTwelvePokemons(pokemons.slice(page.init, page.finish))
@@ -32,15 +33,15 @@ export default function Home() {
     useEffect(() => {
         if (pokemons.lenght != 0 && Array.isArray(pokemons)) {
             setTwelvePokemons(pokemons.slice(page.init, page.finish))
-        } else setTwelvePokemons(pokemons)
+        }
     }, [page])
 
     const allPokemons = () => {
-        dispatch(cleanPokemon())
+        dispatch(cleanPokemon('allPokemons'))
     }
 
 
-    if (Array.isArray(twelvePokemons) && twelvePokemons.length == 0) {
+    if (Array.isArray(pokemons) && pokemons.length == 0) {
         return <div className={style.contenedorLoading}>
         <h1 className={style.loading}>Loading...</h1>
     </div>
@@ -60,7 +61,7 @@ export default function Home() {
                         You must search for it by its exact name
                     </p>
                     <FiltrosPokemon />
-                    <AllPokemons twelvePokemons={twelvePokemons} />
+                    <AllPokemons twelvePokemons={twelvePokemons} allPokemons={allPokemons}/>
                     <Pagination page={page} setPage={setPage} pokemons={pokemons} />
                 </div>
             }
