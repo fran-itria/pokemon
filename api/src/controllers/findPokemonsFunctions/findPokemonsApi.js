@@ -7,9 +7,3 @@ const findPokemonsApi = async (idOrName) => {
 
 
 module.exports = findPokemonsApi
-
-// PROMISES
-// const findPokemonsApi = (idOrName, caso) => {
-//         return axios(`https://pokeapi.co/api/v2/pokemon/${idOrName}`)
-//                 .then(response => response.data)
-// }
