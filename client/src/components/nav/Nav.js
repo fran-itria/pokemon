@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import Search from "./search/Search";
 import style from "./Nav.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Nav({ setInit }) {
   const [component, setComponent] = useState('home');
@@ -9,8 +9,6 @@ export default function Nav({ setInit }) {
   const handleComponent = (event) => {
     setComponent(event.target.name)
   }
-  useEffect(() => console.log(component), [component])
-
   return (
     <div>
       <nav className={component == 'home' ? style.navHome : style.navCreate}>
