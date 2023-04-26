@@ -20,9 +20,10 @@ export default function validate(campos) {
 
   if (!parseInt(campos.hp)) {
     errors.hp = "Hp should be a number";
-  } else if (campos.hp < 100) errors.hp = "Hp must be 100 or higher";
-  else if (!Number.isInteger(Number(campos.deffence))) {
-    errors.deffence = "Hp should be a integer number";
+  } else if (campos.hp < 100) {
+    errors.hp = "Hp must be 100 or higher";
+  } else if (!Number.isInteger(Number(campos.hp))) {
+    errors.hp = "Hp should be a integer number";
   }
 
   if (!parseInt(campos.attack)) {

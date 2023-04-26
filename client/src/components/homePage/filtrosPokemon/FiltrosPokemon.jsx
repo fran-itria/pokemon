@@ -6,10 +6,11 @@ import style from './FiltrosPokemon.module.css'
 
 export default function FiltrosPokemon() {
     const types = useSelector(state => state.types)
+    const filtros = useSelector(state => state.filters)
     const dispatch = useDispatch()
-    const [select, setSelect] = useState()
-    const [filter, setFilter] = useState()
-    const [order, setOrder] = useState()
+    const [select, setSelect] = useState(filtros.select)
+    const [filter, setFilter] = useState(filtros.filter)
+    const [order, setOrder] = useState(filtros.order)
 
     function selectPoke(event) {
         setSelect(event.target.value)
@@ -25,7 +26,7 @@ export default function FiltrosPokemon() {
     }
 
     useEffect(() => {
-        if (typeof select != 'undefined' || filter != 'undefined' || typeof order != 'undefined') {
+        if (typeof select !== 'undefined' || filter !== 'undefined' || typeof order !== 'undefined') {
             dispatch(filters(select, filter, order))
         }
     }, [select, filter, order])
@@ -41,6 +42,7 @@ export default function FiltrosPokemon() {
             </select>
             <p className={style.p}>Select type: </p>
             <select name='filter' onChange={(event) => filterPoke(event)} className={style.select}>
+                <option></option>
                 <option value='All'>All</option>
                 {types.map(type => {
                     return <option value={type.name}>{type.name}</option>
