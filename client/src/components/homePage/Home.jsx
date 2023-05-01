@@ -10,10 +10,11 @@ export default function Home() {
     const pokemons = useSelector(state => state.pokemons)
     const filtros = useSelector(state => state.filters)
     const dispatch = useDispatch()
+    const limitPage = 12
     const [page, setPage] = useState({
         pag: 1,
         init: 0,
-        finish: 12
+        finish: limitPage
     })
     const [twelvePokemons, setTwelvePokemons] = useState([])
 
@@ -25,7 +26,7 @@ export default function Home() {
     useEffect(() => {
         if(Array.isArray(pokemons) && pokemons.length != 0){
             if(page.pag != 1){
-                setPage({...page, pag: 1, init: 0, finish: 12})
+                setPage({...page, pag: 1, init: 0, finish: limitPage})
                 setTwelvePokemons(pokemons.slice(page.init, page.finish))
             } else setTwelvePokemons(pokemons.slice(page.init, page.finish))
         }
@@ -62,7 +63,7 @@ export default function Home() {
                     </p>
                     <FiltrosPokemon />
                     <AllPokemons twelvePokemons={twelvePokemons} allPokemons={allPokemons}/>
-                    <Pagination page={page} setPage={setPage} pokemons={pokemons} />
+                    <Pagination page={page} setPage={setPage} pokemons={pokemons} limitPage={limitPage} />
                 </div>
             }
         </div>
