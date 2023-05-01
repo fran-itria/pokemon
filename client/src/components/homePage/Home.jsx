@@ -10,9 +10,8 @@ export default function Home() {
     const pokemons = useSelector(state => state.pokemons)
     const filtros = useSelector(state => state.filters)
     const dispatch = useDispatch()
-    const limitPage = 12
+    const limitPage = 10
     const [page, setPage] = useState({
-        pag: 1,
         init: 0,
         finish: limitPage
     })
@@ -63,7 +62,7 @@ export default function Home() {
                     </p>
                     <FiltrosPokemon />
                     <AllPokemons twelvePokemons={twelvePokemons} allPokemons={allPokemons}/>
-                    <Pagination page={page} setPage={setPage} pokemons={pokemons} limitPage={limitPage} />
+                    <Pagination setPage={setPage} pokemons={pokemons} limitPage={limitPage} />
                 </div>
             }
         </div>

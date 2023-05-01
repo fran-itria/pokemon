@@ -1,54 +1,35 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { viewButtons, viewPokemons } from "./FunctionsPagination";
+import usePaginasHook from "./paginasHook";
+import usePagesViewHook from "./pagesViewHook";
 import style from "./Pagination.module.css";
 
-export default function Pagination({ page, setPage, pokemons, limitPage}) {
+export default function Pagination({ setPage, pokemons, limitPage }) {
+  const [limitsPagesView, setLimitsPagesView] = useState({
+    current: 1,
+    initPageView: 0,
+    limitPageView: 5,
+  });
+  const { paginas } = usePaginasHook(pokemons, limitPage);
+  const {pagesView } = usePagesViewHook(paginas, limitsPagesView)
 
-  const [paginas, setPaginas] = useState([]);
-  const totalPokemons = pokemons.length;
-  const pagesTotal = totalPokemons / limitPage;
-  let pages = [];
-  useEffect(() => {
-    if (pokemons.length > 0) {
-      for (let i = 0; i < pagesTotal; i++) {
-        pages.push(i + 1);
-      }
-      setPaginas(pages);
-    }
-  }, [pokemons]);
-
-  const viewPokemons = (event) => {
-    const value = event.target.value;
-    if (value == 1) {
-      setPage({
-        ...page,
-        pag: value,
-        init: 0,
-        finish: limitPage * value,
-      });
-    } else {
-      setPage({
-        ...page,
-        pag: value,
-        init: limitPage * (value - 1),
-        finish: limitPage * value,
-      });
-    }
-  };
   return (
     <div className={style.pagination}>
-      {paginas.length > 0 ? (
+      {pagesView.length > 0 ? (
         <>
-          {paginas.map((page, index) => {
+          <button name="prev" onClick={(event) => viewButtons(event, setLimitsPagesView, limitsPagesView, paginas)}>
+            Prev
+          </button>
+          {pagesView.map((page) => {
             return (
-              <button
-                value={index + 1}
-                onClick={(event) => viewPokemons(event)}
-              >
+              <button value={page} onClick={(event) => viewPokemons(event, setPage, limitPage)} className={style.button}>
                 {page}
               </button>
             );
           })}
-          <p className={style.page}>Page actual: {page.pag}</p>
+          <button name="next" onClick={(event) => viewButtons(event, setLimitsPagesView, limitsPagesView, paginas)}>
+            Next
+          </button>
         </>
       ) : (
         <></>
