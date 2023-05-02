@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import dictionary from "../../../../dictionary/Dictionary";
 
-export default function usePaginasHook(pokemons, limitPage) {
+export default function usePaginasHook(pokemons) {
   const [paginas, setPaginas] = useState([]);
   const totalPokemons = pokemons.length;
-  const pagesTotal = totalPokemons / limitPage;
+  const pagesTotal = totalPokemons / dictionary.limitPage;
   let pages = [];
 
   useEffect(() => {
