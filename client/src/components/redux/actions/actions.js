@@ -7,6 +7,8 @@ export const FILTER_ORDER = 'FILTER_ORDER'
 export const ONE_POKEMON = 'ONE_POKEMON'
 export const DETAIL = 'DETAIL'
 export const CLEAN_POKEMON = 'CLEAN_POKEMON'
+export const CREATE = 'CREATE'
+export const GET_POKEMONS_DB = 'GET_POKEMONS_DB'
 
 const URL_BASE = 'http://localhost:3001'
 
@@ -19,8 +21,17 @@ export const getTypes = () => {
 
 export function getPokemons(filtros) {
     return async function (dispatch) {
-        const pokemons = await axios(`${URL_BASE}/pokemons`)
-        dispatch({ type: GET_POKEMONS, payload: { pokemons: pokemons.data, select: filtros.select, filter: filtros.filter, order: filtros.order } })
+        const pokemonsApi = await axios(`${URL_BASE}/pokemons/api`)
+        const pokemonsDb = await axios(`${URL_BASE}/pokemons/db`)
+        const pokemons = pokemonsApi.data.concat(pokemonsDb.data)
+        dispatch({ type: GET_POKEMONS, payload: { pokemons, select: filtros.select, filter: filtros.filter, order: filtros.order } })
+    }
+}
+
+export function getPokemonsDB(filtros){
+    return async function (dispatch) {
+        const pokemonsDb = await axios(`${URL_BASE}/pokemons/db`)
+        dispatch({ type: GET_POKEMONS_DB, payload: { pokemonsDb, select: filtros.select, filter: filtros.filter, order: filtros.order } })
     }
 }
 
@@ -54,6 +65,10 @@ export const detailPokemon = (id) => {
 
 export function cleanPokemon(pokemons) {
     return { type: CLEAN_POKEMON, payload: pokemons }
+}
+
+export const createPokemon = (boolean) => {
+    return{type: CREATE, payload: boolean}
 }
 
 

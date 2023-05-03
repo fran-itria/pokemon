@@ -1,10 +1,13 @@
 import validate from "./ValidateFunction";
 import axios from 'axios'
 import style from './Form.module.css'
+import { useDispatch } from "react-redux";
+import { cleanPokemon, createPokemon } from "../../redux/actions/actions";
+import dictionary from "../../../dictionary/Dictionary";
 
 
 export default function FormComponent({errors, setErrors, campos, setCampos}) {
-
+    const dispatch = useDispatch()
     const onChange = (event) => {
         const name = event.target.name
         const value = event.target.value
@@ -19,17 +22,9 @@ export default function FormComponent({errors, setErrors, campos, setCampos}) {
                 window.alert('Pokemon creado exitosamente')
             })
             .catch(error => window.alert(error.response.data.error))
-        setCampos({
-            name: '',
-            hp: '',
-            image: '',
-            attack: '',
-            deffence: '',
-            speed: '',
-            height: '',
-            weight: '',
-            types: []
-        })
+        setCampos(dictionary.campos)
+        dispatch(cleanPokemon(dictionary.cleanPokemons))
+        dispatch(createPokemon(dictionary.create))
     }
 
     return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { cleanPokemon, getPokemons } from "../redux/actions/actions";
+import { cleanPokemon, createPokemon, getPokemons, getPokemonsDB } from "../redux/actions/actions";
 import style from './Home.module.css'
 import FiltrosPokemon from "./filtrosPokemon/FiltrosPokemon";
 import AllPokemons from "./pokemons/allPokemons/AllPokemons";
@@ -10,6 +10,7 @@ import dictionary from "../../dictionary/Dictionary";
 export default function Home() {
     const pokemons = useSelector(state => state.pokemons)
     const filtros = useSelector(state => state.filters)
+    const create = useSelector(state => state.create)
     const dispatch = useDispatch()
     const [page, setPage] = useState({
         init: 0,
@@ -18,8 +19,14 @@ export default function Home() {
     const [twelvePokemons, setTwelvePokemons] = useState([])
 
     useEffect(() => {
-        dispatch(getPokemons(filtros))
-        return () => dispatch(cleanPokemon('cleanPokemons'))
+        if(create){
+            dispatch(getPokemons(filtros))
+            dispatch(createPokemon(false))
+        }
+        else if( create === dictionary.create){
+            dispatch(getPokemonsDB(filtros))
+            dispatch(createPokemon(false))
+        }
     }, [])
 
     useEffect(() => {
@@ -37,7 +44,7 @@ export default function Home() {
     }, [page])
 
     const allPokemons = () => {
-        dispatch(cleanPokemon('allPokemons'))
+        dispatch(cleanPokemon(dictionary.allPokemons))
     }
 
 

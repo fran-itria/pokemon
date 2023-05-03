@@ -1,4 +1,3 @@
-const { Pokemon, Type } = require('../../db')
 const findPokemonsApi = require('../findPokemonsFunctions/findPokemonsApi')
 
 const findAllPokemonsController = async () => {
@@ -7,16 +6,7 @@ const findAllPokemonsController = async () => {
             const pokemon = await findPokemonsApi(i)
             pokemonsApi.push(pokemon)
         }
-        const pokemonsDB = await Pokemon.findAll({
-            include: {
-                model: Type,
-                attributes: ['name'],
-                through: {
-                    attributes: []
-                }
-            }
-        })
-        return pokemonsApi.concat(pokemonsDB)
+        return pokemonsApi
 }
 
 
