@@ -1,7 +1,4 @@
-import dictionary from "../../../dictionary/Dictionary";
-const {limitPage, next, prev} = dictionary
-
-export function viewPokemons(event, setPage){
+export function viewPokemons(event, setPage, limitPage){
     const value = event.target.value;
     if (value == 1) {
       setPage({
@@ -18,7 +15,7 @@ export function viewPokemons(event, setPage){
 
   export function viewButtons(event, setLimitsPagesView ,limitsPagesView, paginas){
     switch (event.target.name) {
-      case prev:
+      case 'prev':
         if (limitsPagesView.current > 1) {
           setLimitsPagesView({
             ...limitsPagesView,
@@ -28,7 +25,7 @@ export function viewPokemons(event, setPage){
           });
         }
         break;
-      case next:
+      case 'next':
         if (limitsPagesView.current < paginas.length / 5) {
           setLimitsPagesView({
             ...limitsPagesView,

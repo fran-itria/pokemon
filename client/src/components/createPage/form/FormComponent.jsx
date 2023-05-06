@@ -3,8 +3,6 @@ import axios from 'axios'
 import style from './Form.module.css'
 import { useDispatch } from "react-redux";
 import { cleanPokemon, createPokemon } from "../../redux/actions/actions";
-import dictionary from "../../../dictionary/Dictionary";
-
 
 export default function FormComponent({errors, setErrors, campos, setCampos}) {
     const dispatch = useDispatch()
@@ -22,9 +20,19 @@ export default function FormComponent({errors, setErrors, campos, setCampos}) {
                 window.alert('Pokemon creado exitosamente')
             })
             .catch(error => window.alert(error.response.data.error))
-        setCampos(dictionary.campos)
-        dispatch(cleanPokemon(dictionary.cleanPokemons))
-        dispatch(createPokemon(dictionary.create))
+        setCampos({
+            name: '',
+            image: '',
+            hp: '',
+            attack: '',
+            deffence: '',
+            speed: '',
+            height: '',
+            weight: '',
+            types: []
+        })
+        dispatch(cleanPokemon('cleanPokemons'))
+        dispatch(createPokemon('create'))
     }
 
     return (

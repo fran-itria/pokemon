@@ -3,10 +3,19 @@ import style from './Create.module.css'
 import FormComponent from './form/FormComponent'
 import TypesComponent from './type/TypesComponent';
 import ErrorsComponent from './errors/ErrorsComponent';
-import dictionary from '../../dictionary/Dictionary';
 
 export default function Form() {
-    const [campos, setCampos] = useState(dictionary.campos)
+    const [campos, setCampos] = useState({
+        name: '',
+        image: '',
+        hp: '',
+        attack: '',
+        deffence: '',
+        speed: '',
+        height: '',
+        weight: '',
+        types: []
+    })
     const [errors, setErrors] = useState({})
 
     return (

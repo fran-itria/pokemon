@@ -1,6 +1,5 @@
 import { CLEAN_POKEMON, CREATE, DETAIL, FILTERS, FILTER_ORDER, GET_POKEMONS, GET_POKEMONS_DB, GET_TYPES, ONE_POKEMON } from "../actions/actions";
 import filterOrder from "./functionsReducer/functionsReducer";
-import dictionary from "../../../dictionary/Dictionary";
 
 const initialState = {
   types: [],
@@ -39,10 +38,10 @@ const reducer = (state = initialState, { type, payload }) => {
     case DETAIL:
       return { ...state, detail: payload };
     case CLEAN_POKEMON:
-      if (payload == dictionary.allPokemons) {
+      if (payload == 'allPokemons') {
         return { ...state, detail: {} };
       }
-      if (payload == dictionary.cleanPokemons) {
+      if (payload == 'cleanPokemons') {
         return { ...state, pokemons: [] };
       }
     case CREATE:

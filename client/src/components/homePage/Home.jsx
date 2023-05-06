@@ -5,16 +5,16 @@ import style from './Home.module.css'
 import FiltrosPokemon from "./filtrosPokemon/FiltrosPokemon";
 import AllPokemons from "./pokemons/allPokemons/AllPokemons";
 import Pagination from "./pagination/Pagination";
-import dictionary from "../../dictionary/Dictionary";
 
 export default function Home() {
     const pokemons = useSelector(state => state.pokemons)
     const filtros = useSelector(state => state.filters)
     const create = useSelector(state => state.create)
     const dispatch = useDispatch()
+    const limitPgae = 10
     const [page, setPage] = useState({
         init: 0,
-        finish: dictionary.limitPage
+        finish: limitPgae
     })
     const [twelvePokemons, setTwelvePokemons] = useState([])
 
@@ -23,7 +23,7 @@ export default function Home() {
             dispatch(getPokemons(filtros))
             dispatch(createPokemon(false))
         }
-        else if( create === dictionary.create){
+        else if( create === 'create'){
             dispatch(getPokemonsDB(filtros))
             dispatch(createPokemon(false))
         }
@@ -32,7 +32,7 @@ export default function Home() {
     useEffect(() => {
         if(Array.isArray(pokemons) && pokemons.length != 0){
             if(page.pag != 1){
-                setPage({...page, pag: 1, init: 0, finish: dictionary.limitPage})
+                setPage({...page, pag: 1, init: 0, finish: limitPgae})
                 setTwelvePokemons(pokemons.slice(page.init, page.finish))
             } else setTwelvePokemons(pokemons.slice(page.init, page.finish))
         }
@@ -44,7 +44,7 @@ export default function Home() {
     }, [page])
 
     const allPokemons = () => {
-        dispatch(cleanPokemon(dictionary.allPokemons))
+        dispatch(cleanPokemon('allPokemons'))
     }
 
 
@@ -69,7 +69,7 @@ export default function Home() {
                     </p>
                     <FiltrosPokemon />
                     <AllPokemons twelvePokemons={twelvePokemons} allPokemons={allPokemons}/>
-                    <Pagination setPage={setPage} pokemons={pokemons}/>
+                    <Pagination setPage={setPage} pokemons={pokemons} limitPage={limitPgae}/>
                 </div>
             }
         </div>

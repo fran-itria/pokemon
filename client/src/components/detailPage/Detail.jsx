@@ -5,7 +5,6 @@ import { cleanPokemon, detailPokemon } from "../redux/actions/actions"
 import PokemonDB from "./pokemonDB/pokemonDB"
 import PokemonApi from "./pokemonApi/pokemonApi"
 import style from './Detail.module.css'
-import dictionary from "../../dictionary/Dictionary"
 
 export default function Detail() {
     const detail = useSelector(state => state.detail)
@@ -16,7 +15,7 @@ export default function Detail() {
 
     useEffect(() => {
         dispatch(detailPokemon(id))
-        return () => dispatch(cleanPokemon(dictionary.allPokemons))
+        return () => dispatch(cleanPokemon('allPokemons'))
     }, [])
 
     return (
