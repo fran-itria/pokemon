@@ -21,10 +21,8 @@ export const getTypes = () => {
 
 export function getPokemons(filtros) {
     return async function (dispatch) {
-        const pokemonsApi = await axios(`${URL_BASE}/pokemons/api`)
-        const pokemonsDb = await axios(`${URL_BASE}/pokemons/db`)
-        const pokemons = pokemonsApi.data.concat(pokemonsDb.data)
-        dispatch({ type: GET_POKEMONS, payload: { pokemons, select: filtros.select, filter: filtros.filter, order: filtros.order } })
+        const pokemons = await axios(`${URL_BASE}/pokemons/allpokemons`)
+        dispatch({ type: GET_POKEMONS, payload: { pokemons: pokemons.data, select: filtros.select, filter: filtros.filter, order: filtros.order } })
     }
 }
 
